@@ -338,6 +338,24 @@ const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
 		font-size: 0.8125rem;
 	}
 
+	/* Screenshots / figures */
+	.screenshot {
+		margin-bottom: var(--space-4);
+	}
+
+	.screenshot img {
+		width: 100%;
+		height: auto;
+		border: 1px solid var(--border-secondary);
+		border-radius: var(--radius-lg);
+	}
+
+	.screenshot figcaption {
+		font-size: 0.875rem;
+		color: var(--fg-tertiary);
+		margin-top: var(--space-2);
+	}
+
 	/* FAQ accordion */
 	.faq-list {
 		display: flex;

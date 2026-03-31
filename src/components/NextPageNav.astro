@@ -1,0 +1,80 @@
+---
+import { sections } from '../data/sections';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const currentIndex = sections.findIndex((s) => s.path === currentPath);
+const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % sections.length : -1;
+const next = nextIndex >= 0 ? sections[nextIndex] : null;
+---
+
+{next && (
+  <nav class="next-page" aria-label="Следующая страница">
+    <a href={next.path} class="next-page-link">
+      <span class="next-page-label">Следующая страница</span>
+      <span class="next-page-title">
+        {next.title}
+        <svg class="next-page-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </span>
+    </a>
+  </nav>
+)}
+
+<style>
+  .next-page {
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-secondary);
+  }
+
+  .next-page-link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    text-decoration: none;
+    padding: var(--space-5);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    background: var(--bg-secondary);
+    transition: border-color var(--transition-default), background var(--transition-default);
+  }
+
+  .next-page-link:hover {
+    border-color: var(--accent);
+    background: var(--bg-tertiary);
+  }
+
+  .next-page-label {
+    font-size: 0.8125rem;
+    color: var(--fg-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .next-page-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--fg-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .next-page-arrow {
+    color: var(--accent);
+    transition: transform var(--transition-default);
+  }
+
+  .next-page-link:hover .next-page-arrow {
+    transform: translateX(4px);
+  }
+</style>

@@ -3,50 +3,104 @@ import ContentPage from './ContentPage.astro';
 ---
 
 <ContentPage title="FAQ по валютному контролю">
-  <div class="stub">
-    <div class="stub-icon" aria-hidden="true">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-        <line x1="16" y1="13" x2="8" y2="13"></line>
-        <line x1="16" y1="17" x2="8" y2="17"></line>
-        <polyline points="10 9 9 9 8 9"></polyline>
-      </svg>
-    </div>
-    <p class="stub-text">
-      Раздел о валютном контроле находится в разработке. Здесь будут ответы на часто задаваемые вопросы
-      по валютному контролю для индивидуальных предпринимателей: регистрация контрактов, уведомления банка,
-      лимиты переводов и другие вопросы.
-    </p>
-    <p class="stub-note">Контент скоро появится.</p>
+  <p class="intro">
+    Ответы на часто задаваемые вопросы по валютному контролю для индивидуальных предпринимателей,
+    получающих валютные переводы от иностранных компаний.
+  </p>
+
+  <div class="faq-list">
+
+    <details class="faq-item" open>
+      <summary class="faq-question">Как пройти валютный контроль в банке при получении платежа?</summary>
+      <div class="faq-answer">
+        <p>Когда деньги от контрактора приходят в банк, они садятся на спецсчет, и пользователю нужно
+        пройти валютный контроль — написать, за что платеж и номер инвойса с датой.</p>
+        <p>В каждом банке процесс выглядит схоже: приходит пуш, затем пользователь перенаправляется
+        в форму с текстовым полем. Скорее всего, текстовое поле уже предзаполнено информацией из трансфера.</p>
+        <p>Есть два варианта прохождения ВК: <strong>по инвойсу</strong> и <strong>по зарегистрированному валютному контракту</strong>.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Получаем по контракту</summary>
+      <div class="faq-answer">
+        <p>Во-первых, необходимо зарегистрировать контракт в банке.
+        Как это сделать — читайте в разделе <a href="/unk/" class="link">Как получить УНК</a>.</p>
+        <p>Во-вторых, в форме вы указываете в выпадающем списке свой контракт, а затем при заполнении
+        текста пишете:</p>
+        <blockquote>
+          Назначение платежа: «Разработка программного обеспечения», к заявке прикреплен валютный контракт,
+          по которому совершен платеж.
+        </blockquote>
+        <p>Автор документации пару раз сталкивался с тем, что платеж возвращали на доработку, хотя контракт
+        был указан, но не было текста об этом. Тут влияет человеческий фактор менеджера в банке,
+        а потому лучше явно указать на наличие договора.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Получаем по инвойсу</summary>
+      <div class="faq-answer">
+        <p>В предзаполненное поле о назначении платежа нужно дописать следующее:</p>
+        <blockquote>
+          &lt;Предзаполненная информация из трансфера&gt;<br /><br />
+          Назначение платежа: «Разработка программного обеспечения». Номер инвойса
+          #25032021_03040_MT1_015 от 2024-04-23.
+        </blockquote>
+        <p>Ниже поля должна быть галочка <strong>«Не является переводом, по которому требуется
+        присвоение валютного контракта»</strong>.</p>
+        <p>Если вы не регистрировали контракт, то ставьте галочку и отправляйте на обработку.
+        Если текст нравится менеджерам в банке, они аппрувят трансфер и деньги садятся уже на ваш счет.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">В форме валютного контроля появились поля КНП и КОД. Что делать?</summary>
+      <div class="faq-answer">
+        <figure class="screenshot">
+          <img src="/images/currency-control-form.jpg" alt="Форма валютного контроля с полями КНП и КОД" width="917" height="264" loading="lazy" />
+        </figure>
+        <p>Заполняем <strong>851</strong> и <strong>27</strong>. Пояснения:</p>
+        <ul class="info-list">
+          <li>
+            <strong>КНП</strong> — Код Назначения Платежа, зависит от деятельности.
+            В случае оплаты за разработку программного обеспечения будет <strong>851</strong>.
+            Смотрим 8 раздел:
+            <a href="https://egov.kz/cms/ru/articles/knp" target="_blank" rel="noopener noreferrer" class="link">egov.kz/cms/ru/articles/knp</a>
+          </li>
+          <li>
+            <strong>КОД</strong> — Код Отправителя денег, состоит из 2 цифр: резидентство и сектор экономики.
+            Если перевод от иностранного юр. лица — код <strong>27</strong>,
+            иностранное физ. лицо — <strong>29</strong>.
+            Подробнее:
+            <a href="https://prg.kz/document/?doc_id=35263852&pos=46;242" target="_blank" rel="noopener noreferrer" class="link">prg.kz</a>
+          </li>
+        </ul>
+      </div>
+    </details>
+
   </div>
 </ContentPage>
 
 <style>
-  .stub {
+  .info-list {
+    list-style: disc;
+    padding-left: var(--space-5);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: var(--space-8) var(--space-4);
-    gap: var(--space-4);
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
   }
 
-  .stub-icon {
-    color: var(--fg-tertiary);
-    opacity: 0.5;
+  .info-list:last-child {
+    margin-bottom: 0;
   }
 
-  .stub-text {
-    font-size: 1rem;
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: var(--space-4);
+    margin-bottom: var(--space-3);
     color: var(--fg-secondary);
-    line-height: var(--line-height-body);
-    max-width: 36rem;
-  }
-
-  .stub-note {
-    font-size: 0.875rem;
-    color: var(--fg-tertiary);
     font-style: italic;
   }
 </style>

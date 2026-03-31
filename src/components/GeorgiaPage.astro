@@ -1,0 +1,57 @@
+---
+import ContentPage from './ContentPage.astro';
+---
+
+<ContentPage title="ИП в Грузии">
+  <div class="content">
+    <div class="callout callout-warning">
+      <p>
+        <strong>Краткий ответ:</strong> открывать ИП в Грузии для работы на удаленке не рекомендуется,
+        если вы являетесь налоговым резидентом Казахстана.
+      </p>
+    </div>
+
+    <p class="prose">
+      Некоторые разработчики рассматривают Грузию как альтернативу для открытия ИП из-за низких налоговых ставок.
+      Однако, если вы остаетесь налоговым резидентом Казахстана (находитесь более 183 дней в году), вы обязаны
+      платить налоги в Казахстане. Двойное налогообложение, сложности с валютным контролем и дополнительные расходы
+      на ведение бизнеса в другой стране делают этот вариант невыгодным для большинства.
+    </p>
+
+    <p class="prose">
+      Рекомендуем оставаться на упрощенке в Казахстане — это простой, понятный и легальный способ
+      вести деятельность как разработчик на удаленке.
+    </p>
+  </div>
+</ContentPage>
+
+<style>
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .callout {
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-secondary);
+  }
+
+  .callout-warning {
+    border-left: 4px solid var(--warning);
+    background: color-mix(in srgb, var(--warning) 5%, var(--bg-secondary));
+  }
+
+  .callout p {
+    font-size: 0.9375rem;
+    color: var(--fg-secondary);
+    line-height: var(--line-height-body);
+  }
+
+  .prose {
+    font-size: 0.9375rem;
+    color: var(--fg-secondary);
+    line-height: var(--line-height-body);
+  }
+</style>

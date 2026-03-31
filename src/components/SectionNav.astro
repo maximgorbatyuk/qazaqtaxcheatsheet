@@ -1,0 +1,77 @@
+---
+const sections = [
+  { title: 'Какие налоги оплачивать', desc: 'Таблица платежей, суммы, формулы, графики оплаты', path: '/taxes/', icon: '💸' },
+  { title: 'FAQ по валютному контролю', desc: 'Вопросы по валютному контролю для ИП', path: '/faq-currency/', icon: '👮' },
+  { title: 'FAQ и прочие вопросы', desc: 'Форма 910, ОКЭД, форма 270, TIN, БИК, крипта', path: '/faq/', icon: '❓' },
+  { title: 'Как зарегистрироваться на упрощенку', desc: 'Пошаговая инструкция со скриншотами на 2026 год', path: '/registration/', icon: '🎭' },
+  { title: 'Ставка налога по регионам', desc: 'Ставки подоходного налога по городам Казахстана', path: '/tax-rates/', icon: '📉' },
+  { title: 'Пример инвойса', desc: 'Шаблон инвойса для выписывания компании', path: '/invoice/', icon: '📝' },
+  { title: 'Как получить УНК', desc: 'Учетный номер контракта для валютного контроля', path: '/unk/', icon: '📑' },
+  { title: 'Банки для ИП', desc: 'Что выбрать и как работать с банками', path: '/banks/', icon: '🏦' },
+  { title: 'ИП в Грузии', desc: 'Сравнение с Грузией (TLDR: не советуем)', path: '/georgia/', icon: '🚈' },
+  { title: 'Полезные ссылки', desc: 'Полезные ссылки для разработчиков', path: '/links/', icon: '🔗' },
+];
+---
+
+<nav class="section-nav" aria-label="Разделы">
+  <div class="section-grid">
+    {sections.map((s) => (
+      <a href={s.path} class="section-card">
+        <span class="card-icon">{s.icon}</span>
+        <span class="card-title">{s.title}</span>
+        <span class="card-desc">{s.desc}</span>
+      </a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  .section-nav {
+    width: 100%;
+  }
+
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .section-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    background: var(--bg-secondary);
+    text-decoration: none;
+    transition: border-color var(--transition-default), background var(--transition-default);
+  }
+
+  .section-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-tertiary);
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+  }
+
+  .card-title {
+    font-weight: 600;
+    color: var(--fg-primary);
+    font-size: 0.9375rem;
+  }
+
+  .card-desc {
+    font-size: 0.8125rem;
+    color: var(--fg-tertiary);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 480px) {
+    .section-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

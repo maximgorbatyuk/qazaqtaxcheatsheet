@@ -1,0 +1,303 @@
+---
+const changelog = [
+  { date: '2026-02-25', text: 'Добавлен раздел про валютный контроль' },
+  { date: '2026-01-07', text: 'Добавлен раздел «Вопросы» в инструкцию о подаче уведомления о переходе ИП на упрощенку' },
+  { date: '2026-01-02', text: 'Отредактирована документация под налоговый кодекс 2026 года. Часть страниц перемещена в архив' },
+  { date: '2025-12-18', text: 'Обновлена главная. Добавлена инструкция подачи заявки на постановку на упрощенный режим ИП' },
+  { date: '2025-09-29', text: 'Добавлена страница про регистрацию контракта для получения УНК' },
+  { date: '2025-04-02', text: 'Добавлен раздел про форму 270' },
+  { date: '2024-10-25', text: 'Добавлен шаблон инвойса с пояснением' },
+  { date: '2024-07-04', text: 'Добавлено введение на главную' },
+  { date: '2024-06-03', text: 'Добавлен вопрос про оплату в крипте и декларированию' },
+  { date: '2024-04-23', text: 'Дополнена инфа про валютный контроль в банке' },
+  { date: '2024-04-16', text: 'Подписание переводов в Халык Онлайнбанке' },
+  { date: '2024-04-15', text: 'КНП 122 для ОСМС' },
+  { date: '2024-04-10', text: 'Дополнена инфа про НДС для ИП' },
+];
+
+const sections = [
+  { title: 'Какие налоги оплачивать', desc: 'Таблица платежей, суммы, формулы, графики оплаты', path: '/taxes/', icon: '💸' },
+  { title: 'FAQ по валютному контролю', desc: 'Вопросы по валютному контролю для ИП', path: '/faq-currency/', icon: '👮' },
+  { title: 'FAQ и прочие вопросы', desc: 'Форма 910, ОКЭД, форма 270, TIN, БИК, крипта', path: '/faq/', icon: '❓' },
+  { title: 'Как зарегистрироваться на упрощенку', desc: 'Пошаговая инструкция со скриншотами на 2026 год', path: '/registration/', icon: '🎭' },
+  { title: 'Ставка налога по регионам', desc: 'Ставки подоходного налога по городам Казахстана', path: '/tax-rates/', icon: '📉' },
+  { title: 'Пример инвойса', desc: 'Шаблон инвойса для выписывания компании', path: '/invoice/', icon: '📝' },
+  { title: 'Как получить УНК', desc: 'Учетный номер контракта для валютного контроля', path: '/unk/', icon: '📑' },
+  { title: 'Банки для ИП', desc: 'Что выбрать и как работать с банками', path: '/banks/', icon: '🏦' },
+  { title: 'ИП в Грузии', desc: 'Сравнение с Грузией (TLDR: не советуем)', path: '/georgia/', icon: '🚈' },
+  { title: 'Полезные ссылки', desc: 'Полезные ссылки для разработчиков', path: '/links/', icon: '🔗' },
+];
+---
+
+<div class="page">
+  <main class="hero">
+    <h1 class="title">
+      Шпаргалка по ИП
+      <span class="title-accent">на УСН в Казахстане</span>
+    </h1>
+
+    <p class="description">Вопросы, ссылки, хаки, подсказки для ведения ИП на упрощенке. Целевая аудитория — разработчики на удаленке, но советы могут быть полезны любому, кто работает на валютном контракте.</p>
+    <p class="author">Автор: Максим Горбатюк</p>
+  </main>
+
+  <section class="callout callout-warning">
+    <h2 class="callout-title">Изменения кодекса 2026</h2>
+    <ul class="callout-list">
+      <li>Максимальный оборот по упрощенке 2.5 млрд тенге</li>
+      <li>Нужно платить 4% от дохода как подоходный налог. Разбивки по двум разным счетам 1.5% + 1.5% больше нет</li>
+      <li>Даже если превышен лимит по обороту НДС, то платить его не надо, как и регистрироваться как плательщик НДС. ИП на упрощенке не платят НДС</li>
+      <li>С 1 января по 1 марта нужно успеть подать заявку на постановку на упрощенный учет</li>
+    </ul>
+  </section>
+
+  <section class="tutorial">
+    <h2 class="section-title">Туториал</h2>
+    <p class="prose">Вести ИП на упрощенке несложно, от пользователя не потребуется много действий. В отличие от наемных работников, ИПшники обязаны сами рассчитывать и уплачивать налоги вовремя.</p>
+    <p class="prose">Индивидуальный предприниматель на УСН — субъект, который получает доход и платит с него 4% по умолчанию (каждый регион имеет право сделать больше или меньше). Весь полученный доход облагается налогом на упрощенке, для иного исчисления есть другие виды декларирования. НДС у ИП на упрощенке тоже нет, потому даже если вы выходите за лимит в 10 тыс МРП (43 млн тг), то все равно не обязаны становиться на учет НДС.</p>
+    <p class="prose">У ИПшника есть установленная зарплата, на основе которой он обязан высчитывать другие виды налогов: пенсию, соцотчисления и ОСМС. Зарплата самому себе номинальна, ее нет нужды каким-то образом себе платить. Просто ИПшник «объявляет», что он в рамках своего предприятия получает зарплату в N тысяч тенге, и на ее основе высчитывает процентные доли для ежемесячных обязательных платежей.</p>
+  </section>
+
+  <section class="actions">
+    <h2 class="section-title">Список обязательных действий ИПшника</h2>
+    <p class="prose">В начале каждого месяца заплатить ежемесячные платежи за прошедший:</p>
+    <ul class="action-list">
+      <li>Пенсионка</li>
+      <li>ОПВР</li>
+      <li>Соцотчисления</li>
+      <li>ОСМС</li>
+    </ul>
+    <p class="prose">В начале каждого полугодия:</p>
+    <ul class="action-list">
+      <li>Задекларировать доход по форме 910</li>
+      <li>Заплатить через банковские приложения подоходный налог</li>
+      <li>С 2024 года декларировать имущество по форме 250, а в последующем — по форме 270</li>
+    </ul>
+  </section>
+
+  <section class="bank-apps">
+    <p class="prose">
+      В банковских приложениях РК в разделе «Госуслуг» в Каспи и Халык есть возможность оплатить все налоги. В нашей доке уже есть расчет для зарплаты директора в размере 600к (более подробно — в разделе «Какие налоги оплачивать ИП на УСН»), но если вас не устраивает пример, можно сделать собственный расчет в калькуляторе от <a href="https://mybuh.kz/useful/calc_ip_uproshenka/" target="_blank" rel="noopener noreferrer">mybuh.kz</a>
+    </p>
+  </section>
+
+  <section class="sections-grid">
+    <h2 class="section-title">Разделы</h2>
+    <div class="grid">
+      {sections.map((s) => (
+        <a href={s.path} class="section-card">
+          <span class="card-icon">{s.icon}</span>
+          <span class="card-title">{s.title}</span>
+          <span class="card-desc">{s.desc}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="changelog">
+    <h2 class="section-title">История изменений</h2>
+    <ul class="changelog-list">
+      {changelog.map((entry) => (
+        <li class="changelog-entry">
+          <span class="changelog-date">{entry.date}</span>
+          <span class="changelog-text">{entry.text}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</div>
+
+<style>
+  .page {
+    min-height: calc(100vh - var(--nav-height));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+    padding: var(--space-8) var(--space-5) var(--space-8);
+    max-width: 52rem;
+    margin: 0 auto;
+  }
+
+  .hero {
+    text-align: center;
+    max-width: 40rem;
+  }
+
+  .title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+    color: var(--fg-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .title-accent {
+    display: block;
+    color: var(--accent);
+  }
+
+  .description {
+    font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+    color: var(--fg-secondary);
+    line-height: var(--line-height-body);
+    max-width: 36rem;
+    margin: 0 auto var(--space-3);
+  }
+
+  .author {
+    font-size: 0.875rem;
+    color: var(--fg-tertiary);
+  }
+
+  /* Callout */
+  .callout {
+    width: 100%;
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-secondary);
+  }
+
+  .callout-warning {
+    border-left: 4px solid var(--warning);
+    background: color-mix(in srgb, var(--warning) 5%, var(--bg-secondary));
+  }
+
+  .callout-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--warning);
+    margin-bottom: var(--space-3);
+  }
+
+  .callout-list {
+    list-style: disc;
+    padding-left: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    color: var(--fg-secondary);
+    font-size: 0.9375rem;
+    line-height: var(--line-height-body);
+  }
+
+  /* Tutorial & Actions */
+  .tutorial,
+  .actions {
+    width: 100%;
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+    font-weight: 700;
+    color: var(--fg-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .prose {
+    font-size: 0.9375rem;
+    color: var(--fg-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: var(--space-3);
+  }
+
+  .action-list {
+    list-style: disc;
+    padding-left: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    color: var(--fg-secondary);
+    font-size: 0.9375rem;
+    margin-bottom: var(--space-4);
+  }
+
+  /* Sections Grid */
+  .sections-grid {
+    width: 100%;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .section-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    background: var(--bg-secondary);
+    text-decoration: none;
+    transition: border-color var(--transition-default), background var(--transition-default);
+  }
+
+  .section-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-tertiary);
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+  }
+
+  .card-title {
+    font-weight: 600;
+    color: var(--fg-primary);
+    font-size: 0.9375rem;
+  }
+
+  .card-desc {
+    font-size: 0.8125rem;
+    color: var(--fg-tertiary);
+    line-height: 1.4;
+  }
+
+  /* Bank apps note */
+  .bank-apps {
+    width: 100%;
+  }
+
+  /* Changelog */
+  .changelog {
+    width: 100%;
+  }
+
+  .changelog-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .changelog-entry {
+    display: flex;
+    gap: var(--space-3);
+    font-size: 0.875rem;
+    line-height: var(--line-height-body);
+    color: var(--fg-secondary);
+  }
+
+  .changelog-date {
+    color: var(--fg-tertiary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .changelog-entry {
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+  }
+</style>

@@ -1,0 +1,115 @@
+---
+import ContentPage from './ContentPage.astro';
+import regions from '../data/regions-2026.json';
+---
+
+<ContentPage title="Ставка налога по регионам">
+  <p class="intro">
+    Ставка подоходного налога (ИПН) для ИП на упрощенке зависит от региона. Ниже приведены известные ставки на 2026 год.
+    По умолчанию ставка составляет 4%, но отдельные регионы могут установить пониженную ставку.
+  </p>
+
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Город</th>
+          <th>Ставка</th>
+          <th>Референс</th>
+        </tr>
+      </thead>
+      <tbody>
+        {regions.map((r) => (
+          <tr>
+            <td>{r.city}</td>
+            <td class="cell-mono">{r.rate}%</td>
+            <td class="cell-ref">{r.reference}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="note">
+    Полный список ставок по всем регионам можно посмотреть на
+    <a href="https://tsnik.kz" target="_blank" rel="noopener noreferrer" class="link">tsnik.kz</a>.
+  </p>
+</ContentPage>
+
+<style>
+  .intro {
+    font-size: 0.9375rem;
+    color: var(--fg-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: var(--space-6);
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: var(--space-5);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .data-table th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-tertiary);
+    color: var(--fg-secondary);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--border-secondary);
+  }
+
+  .data-table td {
+    padding: var(--space-3) var(--space-4);
+    color: var(--fg-primary);
+    border-bottom: 1px solid var(--border-secondary);
+  }
+
+  .data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .data-table tbody tr:hover {
+    background: var(--bg-secondary);
+  }
+
+  .cell-mono {
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+
+  .cell-ref {
+    font-size: 0.8125rem;
+    color: var(--fg-secondary);
+    max-width: 30rem;
+    white-space: normal;
+    line-height: 1.4;
+  }
+
+  .note {
+    font-size: 0.9375rem;
+    color: var(--fg-secondary);
+    line-height: var(--line-height-body);
+  }
+
+  .link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .link:hover {
+    text-decoration-thickness: 2px;
+  }
+</style>

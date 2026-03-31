@@ -1,0 +1,221 @@
+---
+import ContentPage from './ContentPage.astro';
+---
+
+<ContentPage title="FAQ и прочие вопросы">
+  <div class="faq-list">
+
+    <details class="faq-item">
+      <summary class="faq-question">Полезные сервисы</summary>
+      <div class="faq-answer">
+        <ul class="links-list">
+          <li><a href="https://mybuh.kz" target="_blank" rel="noopener noreferrer" class="link">mybuh.kz</a> — Калькулятор налогов ИП на упрощенке</li>
+          <li><a href="https://egov.kz" target="_blank" rel="noopener noreferrer" class="link">egov.kz</a> — Оплата налогов и задолженностей</li>
+          <li><a href="https://cabinet.kgd.gov.kz" target="_blank" rel="noopener noreferrer" class="link">cabinet.kgd.gov.kz</a> — Кабинет налогоплательщика</li>
+          <li><a href="https://cabinet.salyk.kz" target="_blank" rel="noopener noreferrer" class="link">cabinet.salyk.kz</a> — Подача формы 910</li>
+          <li><a href="https://uchet.kz" target="_blank" rel="noopener noreferrer" class="link">uchet.kz</a> — Курсы валют НБ РК</li>
+          <li><a href="https://esf.gov.kz" target="_blank" rel="noopener noreferrer" class="link">esf.gov.kz</a> — Портал электронных счетов-фактур</li>
+          <li><a href="https://kompra.kz" target="_blank" rel="noopener noreferrer" class="link">kompra.kz</a> — Проверка контрагентов и ИП</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Как подать форму 910?</summary>
+      <div class="faq-answer">
+        <p>Форма 910 подается раз в полугодие через <a href="https://cabinet.salyk.kz" target="_blank" rel="noopener noreferrer" class="link">cabinet.salyk.kz</a>.</p>
+        <ol class="steps-list">
+          <li>Авторизуйтесь через ЭЦП на сайте cabinet.salyk.kz</li>
+          <li>Выберите раздел «Формы налоговой отчетности»</li>
+          <li>Найдите форму 910.00 — «Упрощенная декларация для субъектов малого бизнеса»</li>
+          <li>Укажите период (полугодие) и заполните сумму дохода за полугодие</li>
+          <li>Укажите зарплату директора (себе)</li>
+          <li>Проверьте и отправьте. Подтвердите ЭЦП.</li>
+        </ol>
+        <p>После подачи формы 910 в кабинете налогоплательщика появится начисление по ИПН, которое необходимо оплатить.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Ошибся с суммой дохода в форме 910?</summary>
+      <div class="faq-answer">
+        <p>Если вы допустили ошибку в сумме дохода, подайте ликвидационную (дополнительную) форму 910.
+        Зайдите в cabinet.salyk.kz, выберите ту же форму 910 за тот же период и укажите тип — «дополнительная».
+        Укажите правильную сумму дохода. Система пересчитает налог автоматически.</p>
+        <p>Если в результате переплата — она зачтется в следующий период. Если недоплата — нужно доплатить разницу.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Долги по налогам</summary>
+      <div class="faq-answer">
+        <p>Проверить задолженности можно через:</p>
+        <ul class="links-list">
+          <li><a href="https://egov.kz" target="_blank" rel="noopener noreferrer" class="link">egov.kz</a> — раздел «Задолженности»</li>
+          <li><a href="https://cabinet.kgd.gov.kz" target="_blank" rel="noopener noreferrer" class="link">cabinet.kgd.gov.kz</a> — личный кабинет налогоплательщика</li>
+        </ul>
+        <p>Оплатить можно через банковские приложения (Kaspi, Halyk и др.) или через egov.kz. При задолженности начисляется пеня.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Крипта</summary>
+      <div class="faq-answer">
+        <p>На данный момент криптовалюта в Казахстане не регулируется как доход ИП на упрощенке.
+        Если вы получаете оплату в криптовалюте, рекомендуется конвертировать ее в фиат и декларировать как обычный доход.
+        Налоговое законодательство в этой сфере может измениться — следите за обновлениями.</p>
+        <p>Для целей формы 910 декларируйте суммы, которые поступили на ваш банковский счет.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">ЭСФ (Электронные счета-фактуры)</summary>
+      <div class="faq-answer">
+        <p>ИП на упрощенке, как правило, не обязаны выписывать электронные счета-фактуры (ЭСФ),
+        так как не являются плательщиками НДС. Однако, если ваш контрагент просит ЭСФ, вы можете
+        выписать его через <a href="https://esf.gov.kz" target="_blank" rel="noopener noreferrer" class="link">esf.gov.kz</a>.</p>
+        <p>Для работы с иностранными компаниями ЭСФ обычно не требуется.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Какой ОКЭД выбрать?</summary>
+      <div class="faq-answer">
+        <p>ОКЭД (Общий классификатор экономической деятельности) выбирается при регистрации ИП.
+        Для разработчиков и IT-специалистов подходят:</p>
+        <ul class="links-list">
+          <li><strong>62010</strong> — Разработка компьютерного программного обеспечения</li>
+          <li><strong>62020</strong> — Деятельность по консультации в области компьютерных технологий</li>
+          <li><strong>62090</strong> — Другие виды деятельности в области информационных технологий и компьютерных систем</li>
+        </ul>
+        <p>Можно указать несколько ОКЭД. Основной код влияет на некоторые отчеты, но не на ставку налога на упрощенке.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Форма 250 / 270</summary>
+      <div class="faq-answer">
+        <p><strong>Форма 250</strong> — Декларация об активах и обязательствах. Подается физическими лицами,
+        включая ИП, для декларирования имущества (недвижимость, транспорт, деньги на счетах и т.д.).</p>
+        <p><strong>Форма 270</strong> — Декларация о доходах и имуществе. Заменяет форму 250 в последующие годы.
+        После первоначальной подачи формы 250, в дальнейшем подается форма 270.</p>
+        <p>Подача через <a href="https://cabinet.salyk.kz" target="_blank" rel="noopener noreferrer" class="link">cabinet.salyk.kz</a>.
+        Срок подачи — с 1 января по 31 марта каждого года.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Tax Identification Number (TIN) для Deel.com</summary>
+      <div class="faq-answer">
+        <p>Если вы работаете через Deel.com или другие подобные платформы, вас могут попросить указать
+        Tax Identification Number (TIN).</p>
+        <p>Для Казахстана TIN — это ваш <strong>ИИН</strong> (индивидуальный идентификационный номер).
+        Это 12-значный номер, который можно найти в удостоверении личности или на сайте
+        <a href="https://egov.kz" target="_blank" rel="noopener noreferrer" class="link">egov.kz</a>.</p>
+        <p>В поле «Tax ID» или «TIN» указывайте свой ИИН.</p>
+      </div>
+    </details>
+
+  </div>
+</ContentPage>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .faq-item {
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    background: var(--bg-secondary);
+    overflow: hidden;
+    transition: border-color var(--transition-default);
+  }
+
+  .faq-item[open] {
+    border-color: var(--accent);
+  }
+
+  .faq-question {
+    display: block;
+    padding: var(--space-4) var(--space-5);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--fg-primary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color var(--transition-default);
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::before {
+    content: '+';
+    display: inline-block;
+    width: 1.25rem;
+    margin-right: var(--space-2);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    color: var(--accent);
+    transition: transform var(--transition-default);
+  }
+
+  .faq-item[open] > .faq-question::before {
+    content: '-';
+  }
+
+  .faq-question:hover {
+    color: var(--accent);
+  }
+
+  .faq-answer {
+    padding: 0 var(--space-5) var(--space-5);
+    font-size: 0.9375rem;
+    color: var(--fg-secondary);
+    line-height: var(--line-height-body);
+  }
+
+  .faq-answer p {
+    margin-bottom: var(--space-3);
+  }
+
+  .faq-answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .links-list {
+    list-style: disc;
+    padding-left: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .links-list:last-child {
+    margin-bottom: 0;
+  }
+
+  .steps-list {
+    padding-left: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .link:hover {
+    text-decoration-thickness: 2px;
+  }
+</style>

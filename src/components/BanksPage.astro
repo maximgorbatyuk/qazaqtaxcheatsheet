@@ -1,0 +1,183 @@
+---
+import ContentPage from './ContentPage.astro';
+import banks from '../data/banks.json';
+---
+
+<ContentPage title="Банки для ИП">
+  <p class="intro">
+    Список банков второго уровня Казахстана с БИК-кодами. Используйте поиск для быстрого нахождения нужного банка.
+  </p>
+
+  <div class="search-wrapper">
+    <label for="bank-search" class="search-label">Поиск по названию или БИК</label>
+    <input
+      type="text"
+      id="bank-search"
+      class="search-input"
+      placeholder="Введите название банка или БИК..."
+      autocomplete="off"
+    />
+  </div>
+
+  <div class="table-scroll">
+    <table class="data-table" id="banks-table">
+      <thead>
+        <tr>
+          <th class="col-num">#</th>
+          <th>БИК</th>
+          <th>Код</th>
+          <th>Наименование</th>
+        </tr>
+      </thead>
+      <tbody>
+        {banks.map((bank, i) => (
+          <tr class="bank-row" data-bik={bank.bik.toLowerCase()} data-name={bank.name.toLowerCase()}>
+            <td class="cell-center">{i + 1}</td>
+            <td class="cell-mono">{bank.bik}</td>
+            <td class="cell-mono">{bank.code}</td>
+            <td>{bank.name}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="result-count" id="result-count" aria-live="polite"></p>
+</ContentPage>
+
+<style>
+  .intro {
+    font-size: 0.9375rem;
+    color: var(--fg-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: var(--space-5);
+  }
+
+  .search-wrapper {
+    margin-bottom: var(--space-5);
+  }
+
+  .search-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--fg-secondary);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.9375rem;
+    font-family: inherit;
+    color: var(--fg-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    outline: none;
+    transition: border-color var(--transition-default);
+  }
+
+  .search-input::placeholder {
+    color: var(--fg-tertiary);
+  }
+
+  .search-input:focus {
+    border-color: var(--accent);
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: var(--space-4);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .data-table th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-tertiary);
+    color: var(--fg-secondary);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--border-secondary);
+    white-space: nowrap;
+  }
+
+  .data-table td {
+    padding: var(--space-3) var(--space-4);
+    color: var(--fg-primary);
+    border-bottom: 1px solid var(--border-secondary);
+  }
+
+  .data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .data-table tbody tr:hover {
+    background: var(--bg-secondary);
+  }
+
+  .data-table tbody tr.hidden {
+    display: none;
+  }
+
+  .col-num {
+    width: 3rem;
+  }
+
+  .cell-center {
+    text-align: center;
+    color: var(--fg-tertiary);
+  }
+
+  .cell-mono {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+
+  .result-count {
+    font-size: 0.8125rem;
+    color: var(--fg-tertiary);
+    min-height: 1.2em;
+  }
+</style>
+
+<script>
+  const input = document.getElementById('bank-search') as HTMLInputElement | null;
+  const rows = document.querySelectorAll<HTMLTableRowElement>('.bank-row');
+  const countEl = document.getElementById('result-count');
+
+  if (input) {
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase().trim();
+      let visible = 0;
+
+      rows.forEach((row) => {
+        const bik = row.dataset.bik || '';
+        const name = row.dataset.name || '';
+        const match = !query || bik.includes(query) || name.includes(query);
+        row.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+
+      if (countEl) {
+        countEl.textContent = query
+          ? `Найдено: ${visible} из ${rows.length}`
+          : '';
+      }
+    });
+  }
+</script>

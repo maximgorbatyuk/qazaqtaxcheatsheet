@@ -1,0 +1,54 @@
+{
+  "year": 2026,
+  "mzp": 85000,
+  "mrp": 4307,
+  "maxTurnover": 2500000000,
+  "defaultRate": 0.04,
+  "payments": [
+    {
+      "id": "opv",
+      "knp": "010",
+      "rate": 0.10,
+      "basis": "salary",
+      "frequency": "monthly",
+      "note": "Не менее МЗП. Если нет оборотов — можно не оплачивать",
+      "min2026": 8500
+    },
+    {
+      "id": "so",
+      "knp": "012",
+      "rate": 0.05,
+      "basis": "salary",
+      "frequency": "monthly",
+      "note": "Не менее МЗП. Если нет оборотов — можно не оплачивать",
+      "min2026": 4250
+    },
+    {
+      "id": "osms",
+      "knp": "122",
+      "rate": 0.05,
+      "basis": "1.4 * MZP",
+      "frequency": "monthly",
+      "note": "Оплачивается в обязательном порядке, даже если нет оборота",
+      "min2026": 5950
+    },
+    {
+      "id": "opvr",
+      "knp": "089",
+      "rate": 0.015,
+      "basis": "salary",
+      "frequency": "monthly",
+      "note": "",
+      "min2026": 2975
+    },
+    {
+      "id": "ipn",
+      "kbk": "101201",
+      "knp": "911",
+      "rate": 0.04,
+      "basis": "income",
+      "frequency": "semi-annual",
+      "note": "4% от дохода по умолчанию, 3% для Алматы"
+    }
+  ]
+}

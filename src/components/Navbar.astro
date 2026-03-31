@@ -6,11 +6,8 @@ interface Props {
 const { currentPath } = Astro.props;
 
 const navLinks = [
-  { label: 'Главная', path: '/' },
   { label: 'Налоги', path: '/taxes/' },
-  { label: 'Регистрация', path: '/registration/' },
   { label: 'FAQ', path: '/faq/' },
-  { label: 'Банки', path: '/banks/' },
   { label: 'Ссылки', path: '/links/' },
 ];
 ---
@@ -18,7 +15,7 @@ const navLinks = [
 <header class="navbar">
   <nav class="navbar-inner" aria-label="Основная навигация">
     <a href="/" class="navbar-logo">
-      Qazaq <span class="logo-accent">Tax</span>
+      QazaqTaxCheatsheet
     </a>
 
     <button class="hamburger" id="hamburger" aria-label="Открыть меню" aria-expanded="false">
@@ -73,8 +70,8 @@ const navLinks = [
     right: 0;
     height: var(--nav-height);
     backdrop-filter: blur(12px);
-    background: color-mix(in srgb, var(--bg-primary) 85%, transparent);
-    border-bottom: 1px solid var(--border-secondary);
+    background: var(--bg-primary);
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 12%, var(--border-secondary));
     z-index: 100;
   }
 

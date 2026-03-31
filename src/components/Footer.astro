@@ -13,8 +13,8 @@ const asciiLogo = `  ___ _____
         <pre class="footer-ascii" aria-hidden="true" set:html={asciiLogo} />
         <span class="footer-domain">.fyi</span>
       </div>
-      <p class="footer-tagline">Qazaq Tax Cheatsheet</p>
-      <p class="footer-copyright">2026 Maxim Gorbatyuk. MIT License.</p>
+      <p class="footer-tagline">QazaqTaxCheatsheet</p>
+      <p class="footer-copyright">Made with <span class="heart">♥</span>, Claude, and plenty of coffee breaks by <a href="https://mgorbatyuk.dev" target="_blank" rel="noopener noreferrer" class="author-link">Maxim Gorbatyuk</a></p>
     </div>
 
     <div class="footer-col">
@@ -104,6 +104,21 @@ const asciiLogo = `  ___ _____
     font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
     color: #7A8DA3;
     margin-top: var(--space-2);
+  }
+
+  .heart {
+    color: #FFD700;
+  }
+
+  .author-link {
+    color: #A9B7CB;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color var(--transition-default);
+  }
+
+  .author-link:hover {
+    color: #7EAAFF;
   }
 
   .footer-heading {

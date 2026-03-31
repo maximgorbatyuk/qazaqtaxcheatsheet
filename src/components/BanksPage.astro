@@ -47,9 +47,6 @@ import banks from '../data/banks.json';
 
 <style>
   .intro {
-    font-size: 1rem;
-    color: var(--fg-secondary);
-    line-height: var(--line-height-body);
     margin-bottom: var(--space-5);
   }
 
@@ -88,47 +85,6 @@ import banks from '../data/banks.json';
     border-color: var(--accent);
   }
 
-  .table-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: var(--space-4);
-    border: 1px solid var(--border-secondary);
-    border-radius: var(--radius-lg);
-  }
-
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.875rem;
-  }
-
-  .data-table th {
-    text-align: left;
-    padding: var(--space-3) var(--space-4);
-    background: var(--bg-tertiary);
-    color: var(--fg-secondary);
-    font-weight: 600;
-    font-size: 0.8125rem;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    border-bottom: 1px solid var(--border-secondary);
-    white-space: nowrap;
-  }
-
-  .data-table td {
-    padding: var(--space-3) var(--space-4);
-    color: var(--fg-primary);
-    border-bottom: 1px solid var(--border-secondary);
-  }
-
-  .data-table tbody tr:last-child td {
-    border-bottom: none;
-  }
-
-  .data-table tbody tr:hover {
-    background: var(--bg-secondary);
-  }
-
   .data-table tbody tr.hidden {
     display: none;
   }
@@ -137,14 +93,7 @@ import banks from '../data/banks.json';
     width: 3rem;
   }
 
-  .cell-center {
-    text-align: center;
-    color: var(--fg-tertiary);
-  }
-
   .cell-mono {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
     white-space: nowrap;
   }
 

@@ -11,14 +11,6 @@ const paymentLabels: Record<string, string> = {
   ipn: 'Подоходный налог (ИПН)',
 };
 
-const formulaLabels: Record<string, string> = {
-  salary: '10% от зарплаты',
-  'salary_so': '5% от зарплаты',
-  '1.4 * MZP': '5% от 1.4 * МЗП',
-  'salary_opvr': '1.5% от зарплаты',
-  income: '4% от дохода',
-};
-
 function getFormula(p: typeof taxesData.payments[number]): string {
   if (p.id === 'opv') return `${p.rate * 100}% от зарплаты`;
   if (p.id === 'so') return `${p.rate * 100}% от зарплаты`;
@@ -61,35 +53,30 @@ function getFormula(p: typeof taxesData.payments[number]): string {
         </tbody>
       </table>
     </div>
-  </section>
 
-  <section class="callout callout-warning">
+    <h3 class="callout-title">Зарплата директора</h3>
     <p>
-      <strong>Зарплата директора.</strong> ИПшник сам устанавливает себе зарплату, от которой считаются ОПВ, СО, ОПВР.
+      ИПшник сам устанавливает себе зарплату, от которой считаются ОПВ, СО, ОПВР.
       Минимальная зарплата — 1 МЗП ({taxesData.mzp.toLocaleString('ru-RU')} тг). Если нет оборотов, ОПВ и СО можно не оплачивать,
       но ОСМС обязателен всегда.
     </p>
+
   </section>
 
   <section class="section">
     <h2 class="section-heading">Когда оплачивать?</h2>
-    <div class="payment-schedule">
-      <div class="schedule-item">
-        <h3 class="schedule-label">Ежемесячно (до 25 числа следующего месяца)</h3>
-        <ol class="schedule-list">
-          <li>ОПВ (КНП 010)</li>
-          <li>СО (КНП 012)</li>
-          <li>ОСМС (КНП 122)</li>
-          <li>ОПВР (КНП 089)</li>
-        </ol>
-      </div>
-      <div class="schedule-item">
-        <h3 class="schedule-label">Раз в полгода</h3>
-        <ol class="schedule-list">
-          <li>Подоходный налог (ИПН) — 4% от дохода (КНП 911). Оплачивается после подачи формы 910.</li>
-        </ol>
-      </div>
-    </div>
+    <h3 class="callout-title">Ежемесячно (до 25 числа следующего месяца)</h3>
+    <ol class="schedule-list">
+      <li>ОПВ (КНП 010)</li>
+      <li>СО (КНП 012)</li>
+      <li>ОСМС (КНП 122)</li>
+      <li>ОПВР (КНП 089)</li>
+    </ol>
+
+    <h3 class="callout-title">Раз в полгода</h3>
+    <ol class="schedule-list">
+      <li>Подоходный налог (ИПН) — 4% от дохода (КНП 911). Оплачивается после подачи формы 910.</li>
+    </ol>
   </section>
 
   <section class="section">
@@ -139,74 +126,11 @@ function getFormula(p: typeof taxesData.payments[number]): string {
 
 <style>
   .note {
-    font-size: 1rem;
-    color: var(--fg-secondary);
-    line-height: var(--line-height-body);
     margin-bottom: var(--space-5);
   }
 
   .section {
     margin-bottom: var(--space-7);
-  }
-
-  .section-heading {
-    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--fg-primary);
-    margin-bottom: var(--space-4);
-  }
-
-  .table-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: var(--space-4);
-    border: 1px solid var(--border-secondary);
-    border-radius: var(--radius-lg);
-  }
-
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9375rem;
-    white-space: nowrap;
-  }
-
-  .data-table th {
-    text-align: left;
-    padding: var(--space-3) var(--space-4);
-    background: var(--bg-tertiary);
-    color: var(--fg-secondary);
-    font-weight: 600;
-    font-size: 0.8125rem;
-
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    border-bottom: 1px solid var(--border-secondary);
-  }
-
-  .data-table td {
-    padding: var(--space-3) var(--space-4);
-    color: var(--fg-primary);
-    border-bottom: 1px solid var(--border-secondary);
-  }
-
-  .data-table tbody tr:last-child td {
-    border-bottom: none;
-  }
-
-  .data-table tbody tr:hover {
-    background: var(--bg-secondary);
-  }
-
-  .cell-center {
-    text-align: center;
-    color: var(--fg-tertiary);
-  }
-
-  .cell-mono {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
   }
 
   .cell-small {
@@ -224,44 +148,6 @@ function getFormula(p: typeof taxesData.payments[number]): string {
     border-bottom: none;
   }
 
-  .callout {
-    padding: var(--space-5);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-secondary);
-    margin-bottom: var(--space-6);
-  }
-
-  .callout-info {
-    border-left: 4px solid var(--info);
-    background: color-mix(in srgb, var(--info) 5%, var(--bg-secondary));
-  }
-
-  .callout p {
-    font-size: 1rem;
-    color: var(--fg-secondary);
-    line-height: var(--line-height-body);
-  }
-
-  .payment-schedule {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-  }
-
-  .schedule-item {
-    padding: var(--space-5);
-    border: 1px solid var(--border-secondary);
-    border-radius: var(--radius-lg);
-    background: var(--bg-secondary);
-  }
-
-  .schedule-label {
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--fg-primary);
-    margin-bottom: var(--space-3);
-  }
-
   .schedule-list {
     padding-left: var(--space-5);
     display: flex;
@@ -272,20 +158,4 @@ function getFormula(p: typeof taxesData.payments[number]): string {
     line-height: var(--line-height-body);
   }
 
-  .prose {
-    font-size: 1rem;
-    color: var(--fg-secondary);
-    line-height: var(--line-height-body);
-    margin-bottom: var(--space-3);
-  }
-
-  .link {
-    color: var(--link);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .link:hover {
-    text-decoration-thickness: 2px;
-  }
 </style>

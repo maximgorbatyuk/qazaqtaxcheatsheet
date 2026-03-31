@@ -120,74 +120,6 @@ import ContentPage from './ContentPage.astro';
 </ContentPage>
 
 <style>
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .faq-item {
-    border: 1px solid var(--border-secondary);
-    border-radius: var(--radius-lg);
-    background: var(--bg-secondary);
-    overflow: hidden;
-    transition: border-color var(--transition-default);
-  }
-
-  .faq-item[open] {
-    border-color: var(--accent);
-  }
-
-  .faq-question {
-    display: block;
-    padding: var(--space-4) var(--space-5);
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--fg-primary);
-    cursor: pointer;
-    list-style: none;
-    user-select: none;
-    transition: color var(--transition-default);
-  }
-
-  .faq-question::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-question::before {
-    content: '+';
-    display: inline-block;
-    width: 1.25rem;
-    margin-right: var(--space-2);
-    font-family: var(--font-mono);
-    font-weight: 400;
-    color: var(--accent);
-    transition: transform var(--transition-default);
-  }
-
-  .faq-item[open] > .faq-question::before {
-    content: '-';
-  }
-
-  .faq-question:hover {
-    color: var(--accent);
-  }
-
-  .faq-answer {
-    padding: 0 var(--space-5) var(--space-5);
-    font-size: 1rem;
-    color: var(--fg-secondary);
-    line-height: var(--line-height-body);
-  }
-
-  .faq-answer p {
-    margin-bottom: var(--space-3);
-  }
-
-  .faq-answer p:last-child {
-    margin-bottom: 0;
-  }
-
   .links-list {
     list-style: disc;
     padding-left: var(--space-5);
@@ -207,15 +139,5 @@ import ContentPage from './ContentPage.astro';
     flex-direction: column;
     gap: var(--space-2);
     margin-bottom: var(--space-3);
-  }
-
-  .link {
-    color: var(--link);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .link:hover {
-    text-decoration-thickness: 2px;
   }
 </style>

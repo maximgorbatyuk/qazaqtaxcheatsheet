@@ -9,7 +9,7 @@ interface Props {
 
 const {
 	title = 'Шпаргалка по ИП на УСН в Казахстане',
-	description = 'Гайд по ведению ИП на упрощенке в Казахстане. Налоги, регистрация, банки, FAQ для разработчиков на удаленке.',
+	description = 'Гайд по ведению ИП на упрощённой системе налогообложения в Казахстане. Налоги, регистрация, банки, FAQ для фрилансеров и разработчиков на удалёнке.',
 } = Astro.props;
 
 const siteUrl = 'https://qazaqtaxcheatsheet.fyi';
@@ -49,6 +49,7 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:site_name" content={siteName} />
 		<meta property="og:locale" content="ru_RU" />
+		<meta property="og:image" content={`${siteUrl}/favicon.svg`} />
 
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={fullTitle} />
@@ -110,8 +111,11 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 		})} />
 	</head>
 	<body>
+		<a class="skip-link" href="#main-content">Перейти к содержимому</a>
 		<Navbar currentPath={Astro.url.pathname} />
-		<slot />
+		<main id="main-content">
+			<slot />
+		</main>
 		<Footer />
 	</body>
 </html>
@@ -250,6 +254,26 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 	*:focus-visible {
 		outline: 2px solid var(--accent);
 		outline-offset: 2px;
+	}
+
+	/* Skip link */
+	.skip-link {
+		position: absolute;
+		top: -100%;
+		left: var(--space-4);
+		z-index: 200;
+		padding: var(--space-2) var(--space-4);
+		background: var(--accent);
+		color: #fff;
+		border-radius: var(--radius-sm);
+		font-size: 0.875rem;
+		text-decoration: none;
+		transition: top var(--transition-fast);
+	}
+
+	.skip-link:focus {
+		top: var(--space-2);
+		color: #fff;
 	}
 
 	/* ===== Shared Component Styles ===== */

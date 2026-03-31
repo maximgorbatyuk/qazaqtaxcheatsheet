@@ -50,14 +50,15 @@ const color = colorMap[type];
   }
 
   .callout-title {
+    font-family: var(--font-display);
     font-weight: 700;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--color);
     margin-bottom: var(--space-2);
   }
 
   .callout-content {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--fg-secondary);
     line-height: var(--line-height-body);
   }
@@ -87,7 +88,7 @@ const color = colorMap[type];
   }
 
   .callout-content :global(a) {
-    color: var(--accent);
+    color: var(--link);
   }
 
   .callout-content :global(strong) {

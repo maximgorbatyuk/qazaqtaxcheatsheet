@@ -33,17 +33,18 @@ const sections = [
   .section-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-4);
+    gap: var(--space-5);
   }
 
   .section-card {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
-    padding: var(--space-4);
+    gap: var(--space-2);
+    padding: var(--space-5);
     border: 1px solid var(--border-secondary);
     border-radius: var(--radius-lg);
     background: var(--bg-secondary);
+    box-shadow: var(--shadow-sm);
     text-decoration: none;
     transition: border-color var(--transition-default), background var(--transition-default);
   }
@@ -58,14 +59,15 @@ const sections = [
   }
 
   .card-title {
+    font-family: var(--font-display);
     font-weight: 600;
     color: var(--fg-primary);
-    font-size: 0.9375rem;
+    font-size: 1rem;
   }
 
   .card-desc {
-    font-size: 0.8125rem;
-    color: var(--fg-tertiary);
+    font-size: 0.875rem;
+    color: var(--fg-secondary);
     line-height: 1.4;
   }
 

@@ -90,7 +90,7 @@ import ContentPage from './ContentPage.astro';
 
 <style>
   .intro {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--fg-secondary);
     line-height: var(--line-height-body);
     margin-bottom: var(--space-6);
@@ -106,7 +106,7 @@ import ContentPage from './ContentPage.astro';
   .step {
     display: flex;
     gap: var(--space-4);
-    padding: var(--space-5);
+    padding: var(--space-5) var(--space-6);
     border: 1px solid var(--border-secondary);
     border-radius: var(--radius-lg);
     background: var(--bg-secondary);
@@ -122,7 +122,6 @@ import ContentPage from './ContentPage.astro';
     border-radius: 50%;
     background: var(--accent);
     color: var(--bg-primary);
-    font-family: var(--font-mono);
     font-weight: 700;
     font-size: 1rem;
   }
@@ -133,15 +132,14 @@ import ContentPage from './ContentPage.astro';
   }
 
   .step-title {
-    font-family: var(--font-serif);
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--fg-primary);
     margin-bottom: var(--space-2);
   }
 
   .step-text {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--fg-secondary);
     line-height: var(--line-height-body);
     margin-bottom: var(--space-2);
@@ -156,9 +154,9 @@ import ContentPage from './ContentPage.astro';
   }
 
   .section-heading {
-    font-family: var(--font-serif);
     font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
     font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--fg-primary);
     margin-bottom: var(--space-4);
   }
@@ -185,7 +183,7 @@ import ContentPage from './ContentPage.astro';
     display: block;
     padding: var(--space-4) var(--space-5);
     font-weight: 600;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--fg-primary);
     cursor: pointer;
     list-style: none;
@@ -216,7 +214,7 @@ import ContentPage from './ContentPage.astro';
 
   .faq-answer {
     padding: 0 var(--space-5) var(--space-5);
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--fg-secondary);
     line-height: var(--line-height-body);
   }
@@ -230,7 +228,7 @@ import ContentPage from './ContentPage.astro';
   }
 
   .link {
-    color: var(--accent);
+    color: var(--link);
     text-decoration: underline;
     text-underline-offset: 2px;
   }

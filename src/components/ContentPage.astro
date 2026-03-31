@@ -20,7 +20,7 @@ const { title, description } = Astro.props;
 
 <style>
   .content-page {
-    max-width: 52rem;
+    max-width: var(--reading-width);
     margin: 0 auto;
     padding: var(--space-8) var(--space-5);
     min-height: calc(100vh - var(--nav-height));
@@ -31,16 +31,16 @@ const { title, description } = Astro.props;
   }
 
   .content-title {
-    font-family: var(--font-serif);
     font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem);
     font-weight: 700;
     line-height: var(--line-height-heading);
+    letter-spacing: -0.02em;
     color: var(--fg-primary);
     margin-bottom: var(--space-3);
   }
 
   .content-description {
-    font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+    font-size: 1.125rem;
     color: var(--fg-secondary);
     line-height: var(--line-height-body);
     max-width: 40rem;
@@ -48,24 +48,24 @@ const { title, description } = Astro.props;
 
   /* Prose styles for slotted content */
   .content-body {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--fg-secondary);
     line-height: var(--line-height-body);
   }
 
   .content-body :global(h2) {
-    font-family: var(--font-serif);
     font-size: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
     font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--fg-primary);
     margin-top: var(--space-7);
     margin-bottom: var(--space-4);
   }
 
   .content-body :global(h3) {
-    font-family: var(--font-serif);
     font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
     font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--fg-primary);
     margin-top: var(--space-6);
     margin-bottom: var(--space-3);
@@ -93,14 +93,14 @@ const { title, description } = Astro.props;
   }
 
   .content-body :global(a) {
-    color: var(--accent);
+    color: var(--link);
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: color var(--transition-default);
   }
 
   .content-body :global(a:hover) {
-    color: var(--accent-hover);
+    color: var(--accent);
   }
 
   .content-body :global(code) {

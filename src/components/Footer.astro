@@ -1,15 +1,18 @@
 ---
-const asciiLogo = ` _____
-|_   _|_ ___  __
-  | |/ _\` \\ \\/ /
-  | | (_| |>  <
-  |_|\\__,_/_/\\_\\`;
+const asciiLogo = `  ___ _____
+ / _ \\_   _|
+| | | || |
+| |_| || |
+ \\__\\_\\|_|`;
 ---
 
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-col footer-brand">
-      <pre class="footer-ascii" aria-hidden="true" set:html={asciiLogo} />
+      <div class="footer-logo">
+        <pre class="footer-ascii" aria-hidden="true" set:html={asciiLogo} />
+        <span class="footer-domain">.fyi</span>
+      </div>
       <p class="footer-tagline">Qazaq Tax Cheatsheet</p>
       <p class="footer-copyright">2026 Maxim Gorbatyuk. MIT License.</p>
     </div>
@@ -21,23 +24,29 @@ const asciiLogo = ` _____
         <li><a href="/taxes/">Налоги</a></li>
         <li><a href="/registration/">Регистрация</a></li>
         <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/banks/">Банки</a></li>
+        <li><a href="/links/">Ссылки</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h3 class="footer-heading">Ресурсы</h3>
+      <h3 class="footer-heading">Наши проекты</h3>
       <ul class="footer-links">
-        <li><a href="/banks/">Банки</a></li>
-        <li><a href="/links/">Ссылки</a></li>
-        <li><a href="https://maximgorbatyuk.notion.site/ip-kazakhstan-tutorial" target="_blank" rel="noopener noreferrer">Notion-версия</a></li>
+        <li><a href="https://mgorbatyuk.dev" target="_blank" rel="noopener noreferrer">Блог автора</a></li>
+        <li><a href="https://claude-community.kz" target="_blank" rel="noopener noreferrer">Claude Community KZ</a></li>
+        <li><a href="https://markdownreader.org" target="_blank" rel="noopener noreferrer">Markdown Reader</a></li>
+        <li><a href="#" rel="noopener noreferrer">Проект 4</a></li>
+        <li><a href="#" rel="noopener noreferrer">Проект 5</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h3 class="footer-heading">GitHub</h3>
       <ul class="footer-links">
-        <li><a href="https://github.com/maximgorbatyuk/qazaqtaxcheatsheet" target="_blank" rel="noopener noreferrer">Репозиторий</a></li>
+        <li><a href="https://github.com/maximgorbatyuk/qazaqtaxcheatsheet" target="_blank" rel="noopener noreferrer">Repository</a></li>
         <li><a href="https://github.com/maximgorbatyuk/qazaqtaxcheatsheet/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+        <li><a href="/privacy/">Privacy Policy</a></li>
+        <li><a href="https://github.com/maximgorbatyuk/qazaqtaxcheatsheet/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License</a></li>
       </ul>
     </div>
   </div>
@@ -47,8 +56,8 @@ const asciiLogo = ` _____
   .footer {
     width: 100%;
     z-index: 1;
-    background: #131313;
-    border-top: 1px solid #525252;
+    background: #0E1623;
+    border-top: 1px solid #1B2940;
     padding: var(--space-7) var(--space-6);
   }
 
@@ -60,34 +69,47 @@ const asciiLogo = ` _____
     margin: 0 auto;
   }
 
+  .footer-logo {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+
   .footer-ascii {
     font-family: var(--font-mono);
     font-size: 0.75rem;
     line-height: 1.2;
-    color: var(--accent);
+    color: #4D79C7;
     white-space: pre;
     overflow: hidden;
     margin: 0;
   }
 
+  .footer-domain {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #7A8DA3;
+    line-height: 1;
+    padding-bottom: 0.125rem;
+  }
+
   .footer-tagline {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-size: clamp(1.25rem, 1.1rem + 0.65vw, 1.75rem);
-    color: #f5f5f5;
+    color: #EAF0F8;
     margin-top: var(--space-2);
   }
 
   .footer-copyright {
     font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
-    color: #737373;
+    color: #7A8DA3;
     margin-top: var(--space-2);
   }
 
   .footer-heading {
-    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 600;
-    color: #f5f5f5;
+    color: #EAF0F8;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: var(--space-3);
@@ -104,13 +126,13 @@ const asciiLogo = ` _____
 
   .footer-links a {
     font-size: 0.875rem;
-    color: #9a9a9a;
+    color: #A9B7CB;
     text-decoration: none;
     transition: color var(--transition-default);
   }
 
   .footer-links a:hover {
-    color: var(--accent);
+    color: #7EAAFF;
   }
 
   @media (max-width: 480px) {
@@ -119,7 +141,7 @@ const asciiLogo = ` _____
       gap: var(--space-5);
     }
 
-    .footer-ascii {
+    .footer-logo {
       display: none;
     }
   }

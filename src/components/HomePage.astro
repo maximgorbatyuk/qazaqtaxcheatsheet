@@ -114,7 +114,7 @@ const sections = [
     align-items: center;
     gap: var(--space-8);
     padding: var(--space-8) var(--space-5) var(--space-8);
-    max-width: 52rem;
+    max-width: var(--reading-width);
     margin: 0 auto;
   }
 
@@ -124,10 +124,10 @@ const sections = [
   }
 
   .title {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    font-size: clamp(2.25rem, 1.5rem + 2.5vw, 3rem);
     font-weight: 700;
     line-height: var(--line-height-heading);
+    letter-spacing: -0.02em;
     color: var(--fg-primary);
     margin-bottom: var(--space-4);
   }
@@ -138,7 +138,7 @@ const sections = [
   }
 
   .description {
-    font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+    font-size: 1.125rem;
     color: var(--fg-secondary);
     line-height: var(--line-height-body);
     max-width: 36rem;
@@ -153,7 +153,7 @@ const sections = [
   /* Callout */
   .callout {
     width: 100%;
-    padding: var(--space-5);
+    padding: var(--space-5) var(--space-6);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-secondary);
   }
@@ -164,9 +164,8 @@ const sections = [
   }
 
   .callout-title {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.125rem;
+    font-weight: 600;
     color: var(--warning);
     margin-bottom: var(--space-3);
   }
@@ -178,7 +177,7 @@ const sections = [
     flex-direction: column;
     gap: var(--space-2);
     color: var(--fg-secondary);
-    font-size: 0.9375rem;
+    font-size: 1rem;
     line-height: var(--line-height-body);
   }
 
@@ -189,15 +188,15 @@ const sections = [
   }
 
   .section-title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+    font-size: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
     font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--fg-primary);
     margin-bottom: var(--space-4);
   }
 
   .prose {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--fg-secondary);
     line-height: var(--line-height-body);
     margin-bottom: var(--space-3);
@@ -210,7 +209,7 @@ const sections = [
     flex-direction: column;
     gap: var(--space-1);
     color: var(--fg-secondary);
-    font-size: 0.9375rem;
+    font-size: 1rem;
     margin-bottom: var(--space-4);
   }
 
@@ -222,17 +221,18 @@ const sections = [
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-4);
+    gap: var(--space-5);
   }
 
   .section-card {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
-    padding: var(--space-4);
+    gap: var(--space-2);
+    padding: var(--space-5);
     border: 1px solid var(--border-secondary);
     border-radius: var(--radius-lg);
     background: var(--bg-secondary);
+    box-shadow: var(--shadow-sm);
     text-decoration: none;
     transition: border-color var(--transition-default), background var(--transition-default);
   }
@@ -247,14 +247,15 @@ const sections = [
   }
 
   .card-title {
+    font-family: var(--font-display);
     font-weight: 600;
     color: var(--fg-primary);
-    font-size: 0.9375rem;
+    font-size: 1rem;
   }
 
   .card-desc {
-    font-size: 0.8125rem;
-    color: var(--fg-tertiary);
+    font-size: 0.875rem;
+    color: var(--fg-secondary);
     line-height: 1.4;
   }
 
@@ -278,7 +279,7 @@ const sections = [
   .changelog-entry {
     display: flex;
     gap: var(--space-3);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     line-height: var(--line-height-body);
     color: var(--fg-secondary);
   }

@@ -120,6 +120,112 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 	</body>
 </html>
 
+<script>
+	const CYRILLIC: Record<string, string> = {
+		'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo',
+		'ж':'zh','з':'z','и':'i','й':'j','к':'k','л':'l','м':'m',
+		'н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u',
+		'ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch',
+		'ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya',
+	};
+
+	function slugify(text: string): string {
+		return text
+			.toLowerCase()
+			.split('')
+			.map(c => CYRILLIC[c] ?? c)
+			.join('')
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-+|-+$/g, '')
+			.replace(/-{2,}/g, '-');
+	}
+
+	function uniqueId(id: string, usedIds: Set<string>): string {
+		let finalId = id;
+		let counter = 2;
+		while (usedIds.has(finalId) || document.getElementById(finalId)) {
+			finalId = `${id}-${counter++}`;
+		}
+		usedIds.add(finalId);
+		return finalId;
+	}
+
+	function initAnchors(): void {
+		const main = document.getElementById('main-content');
+		if (!main) return;
+
+		const usedIds = new Set<string>();
+
+		// Headings
+		main.querySelectorAll<HTMLHeadingElement>('h2, h3, h4, h5, h6').forEach(heading => {
+			const text = heading.textContent?.trim() ?? '';
+			if (!text) return;
+
+			const id = slugify(text);
+			if (!id) return;
+
+			heading.id = uniqueId(id, usedIds);
+			heading.classList.add('has-anchor');
+
+			const anchor = document.createElement('a');
+			anchor.href = `#${heading.id}`;
+			anchor.className = 'heading-anchor';
+			anchor.setAttribute('aria-hidden', 'true');
+			anchor.tabIndex = -1;
+			anchor.textContent = '#';
+
+			heading.prepend(anchor);
+		});
+
+		// FAQ items
+		main.querySelectorAll<HTMLDetailsElement>('.faq-item').forEach(details => {
+			const summary = details.querySelector<HTMLElement>('.faq-question');
+			if (!summary) return;
+
+			const text = summary.textContent?.trim() ?? '';
+			if (!text) return;
+
+			const id = slugify(text);
+			if (!id) return;
+
+			details.id = uniqueId(id, usedIds);
+
+			const anchor = document.createElement('a');
+			anchor.href = `#${details.id}`;
+			anchor.className = 'faq-anchor';
+			anchor.setAttribute('aria-hidden', 'true');
+			anchor.tabIndex = -1;
+			anchor.textContent = '#';
+			anchor.addEventListener('click', (e) => {
+				e.stopPropagation();
+			});
+
+			summary.appendChild(anchor);
+
+			details.addEventListener('toggle', () => {
+				if (!details.open && location.hash === `#${details.id}`) {
+					history.replaceState(null, '', location.pathname + location.search);
+				}
+			});
+		});
+
+		// Handle hash in URL
+		if (location.hash) {
+			const target = document.querySelector<HTMLElement>(location.hash);
+			if (target) {
+				if (target instanceof HTMLDetailsElement) {
+					target.open = true;
+				}
+				requestAnimationFrame(() => {
+					target.scrollIntoView();
+				});
+			}
+		}
+	}
+
+	document.addEventListener('DOMContentLoaded', initAnchors);
+</script>
+
 <style is:global>
 	/* ===== CSS Custom Properties ===== */
 	:root {
@@ -236,6 +342,13 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 
 	body {
 		padding-top: var(--nav-height);
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	#main-content {
+		flex: 1;
 	}
 
 	h1, h2, h3, h4 {
@@ -432,7 +545,8 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 	}
 
 	.faq-question {
-		display: block;
+		display: flex;
+		align-items: center;
 		padding: var(--space-4) var(--space-5);
 		font-weight: 600;
 		font-size: 1rem;
@@ -479,6 +593,99 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 
 	.faq-answer p:last-child {
 		margin-bottom: 0;
+	}
+
+	/* ===== Anchor Headings ===== */
+	#main-content h2[id],
+	#main-content h3[id],
+	#main-content h4[id],
+	#main-content h5[id],
+	#main-content h6[id],
+	#main-content .faq-item[id] {
+		scroll-margin-top: calc(var(--nav-height) + var(--space-4));
+	}
+
+	.has-anchor {
+		position: relative;
+	}
+
+	.heading-anchor {
+		position: absolute;
+		left: 0;
+		transform: translateX(-100%);
+		padding-right: var(--space-2);
+		color: var(--fg-tertiary);
+		text-decoration: none;
+		font-family: var(--font-mono);
+		font-weight: 400;
+		opacity: 0;
+		transition: opacity var(--transition-default);
+	}
+
+	.heading-anchor:hover {
+		color: var(--accent);
+	}
+
+	.has-anchor:hover .heading-anchor {
+		opacity: 1;
+	}
+
+	:target {
+		animation: target-highlight 2s ease;
+	}
+
+	@keyframes target-highlight {
+		0%, 30% {
+			outline: 2px solid var(--accent);
+			outline-offset: 4px;
+		}
+		100% {
+			outline-color: transparent;
+		}
+	}
+
+	.faq-question .faq-anchor {
+		margin-left: auto;
+		color: var(--fg-tertiary);
+		text-decoration: none;
+		font-family: var(--font-mono);
+		font-weight: 400;
+		font-size: 0.875rem;
+		opacity: 0;
+		transition: opacity var(--transition-default);
+		padding: 0.625rem;
+		margin-top: -0.625rem;
+		margin-bottom: -0.625rem;
+		margin-right: -0.625rem;
+	}
+
+	.faq-question .faq-anchor:hover {
+		color: var(--accent);
+	}
+
+	.faq-question:hover .faq-anchor {
+		opacity: 1;
+	}
+
+	@media (max-width: 56em) {
+		.heading-anchor {
+			opacity: 0.4;
+			padding: 0.625rem;
+			margin: -0.625rem;
+			margin-right: 0;
+		}
+
+		.has-anchor:hover .heading-anchor {
+			opacity: 0.7;
+		}
+
+		.faq-question .faq-anchor {
+			opacity: 0.4;
+		}
+
+		.faq-question:hover .faq-anchor {
+			opacity: 0.7;
+		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {

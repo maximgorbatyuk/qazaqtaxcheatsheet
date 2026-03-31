@@ -3,50 +3,195 @@ import ContentPage from './ContentPage.astro';
 ---
 
 <ContentPage title="Пример инвойса">
-  <div class="stub">
-    <div class="stub-icon" aria-hidden="true">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-        <line x1="16" y1="13" x2="8" y2="13"></line>
-        <line x1="16" y1="17" x2="8" y2="17"></line>
-        <polyline points="10 9 9 9 8 9"></polyline>
+  <p class="intro">
+    Шаблон инвойса, который можно использовать для выписывания иностранной компании.
+    Включает все необходимые поля: реквизиты ИП, описание услуг, сумму, банковские реквизиты для международного перевода (SWIFT/IBAN).
+  </p>
+
+  <p>
+    <a href="/files/invoice-template.docx" download class="download-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
       </svg>
+      Скачать шаблон инвойса (.docx, 9 КБ)
+    </a>
+  </p>
+
+  <h2>Пример заполнения</h2>
+
+  <div class="invoice-preview">
+    <div class="invoice-header">
+      <h3 class="invoice-title">Invoice #20240305_13</h3>
     </div>
-    <p class="stub-text">
-      Здесь будет пример инвойса, который можно использовать для выписывания иностранной компании.
-      Шаблон будет включать все необходимые поля: реквизиты ИП, описание услуг, сумму, банковские реквизиты
-      для международного перевода (SWIFT/IBAN).
-    </p>
-    <p class="stub-note">Контент скоро появится.</p>
+
+    <div class="invoice-section">
+      <div class="invoice-parties">
+        <div class="invoice-party">
+          <p class="invoice-label">From:</p>
+          <p><strong>Individual Entrepreneur John Doe</strong></p>
+          <p>Address: Kazakhstan, 050000, Almaty, Maulenov 125, aprt.13</p>
+          <p>Tel.: +7 (701) 762-00-00</p>
+          <p>Registration number: KZ75UWQ02408999</p>
+          <p>Identification number: 931019300788</p>
+        </div>
+        <div class="invoice-party">
+          <p class="invoice-label">To:</p>
+          <p><strong>&lt;CompanyName&gt; LLC</strong></p>
+          <p>Address: Address</p>
+          <p>City: City</p>
+          <p>Country: Country</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="invoice-section">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Services description</th>
+            <th>Period of services</th>
+            <th>Total cost (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cell-center">1</td>
+            <td>Software development services</td>
+            <td>April, 2025</td>
+            <td class="cell-mono">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="invoice-section">
+      <p class="invoice-label">Payment details:</p>
+      <p>Software development services according to Agreement #20240305 dated March 5, 2024.</p>
+      <p><strong>Amount:</strong> 0 000 USD (Zero thousands USD 00 cents), no VAT.</p>
+    </div>
+
+    <div class="invoice-section">
+      <p class="invoice-label">Terms of payments and acceptation:</p>
+      <p>Postpayment of 100% upon the services delivery in accordance with the Services Agreement.
+      By full payment of this invoice the &lt;CompanyName&gt; confirms, that all the contract conditions
+      listed below have been utterly fulfilled in due time and with adequate quality.</p>
+    </div>
+
+    <div class="invoice-section">
+      <p class="invoice-label">Bank details:</p>
+      <p><strong>Account with Institution:</strong> JSC Halyk Bank</p>
+      <p><strong>SWIFT:</strong> HSBKKZKX</p>
+      <p>40 Al-Farabi ave., A26M3K5, Almaty, Kazakhstan</p>
+      <p><strong>Beneficiary account:</strong> KZ98601A861003281100</p>
+      <p><strong>Beneficiary:</strong> John Doe</p>
+    </div>
+
+    <div class="invoice-section invoice-signature">
+      <p>John Doe: ___________________________________________________________</p>
+      <p>Date: 2025-04-17</p>
+    </div>
   </div>
+
+  <h2>Пояснения к полям</h2>
+  <ul>
+    <li><strong>Invoice #</strong> — номер инвойса, обычно формат: дата договора + порядковый номер</li>
+    <li><strong>From</strong> — ваши реквизиты ИП: адрес, телефон, регистрационный номер, ИИН</li>
+    <li><strong>To</strong> — реквизиты компании-заказчика</li>
+    <li><strong>Services description</strong> — описание оказанных услуг</li>
+    <li><strong>Period of services</strong> — период, за который оказаны услуги</li>
+    <li><strong>Amount</strong> — сумма прописью и цифрами, с пометкой «no VAT» (ИП на упрощенке не платят НДС)</li>
+    <li><strong>SWIFT / Beneficiary account</strong> — реквизиты вашего банковского счета для международного перевода</li>
+  </ul>
 </ContentPage>
 
 <style>
-  .stub {
-    display: flex;
-    flex-direction: column;
+  .download-link {
+    display: inline-flex;
     align-items: center;
-    text-align: center;
-    padding: var(--space-8) var(--space-4);
-    gap: var(--space-4);
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    color: var(--fg-primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color var(--transition-default), background var(--transition-default);
   }
 
-  .stub-icon {
-    color: var(--fg-tertiary);
-    opacity: 0.5;
+  .download-link:hover {
+    border-color: var(--accent);
+    background: var(--bg-tertiary);
+    color: var(--fg-primary);
   }
 
-  .stub-text {
-    font-size: 1rem;
-    color: var(--fg-secondary);
-    line-height: var(--line-height-body);
-    max-width: 36rem;
+  .invoice-preview {
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    background: #fff;
+    color: #172033;
+    padding: var(--space-6);
+    margin-bottom: var(--space-4);
+    box-shadow: var(--shadow-md);
   }
 
-  .stub-note {
+  [data-theme='dark'] .invoice-preview {
+    background: #1B2940;
+    color: #EAF0F8;
+  }
+
+  .invoice-header {
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--border-primary);
+  }
+
+  .invoice-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .invoice-section {
+    margin-bottom: var(--space-3);
+  }
+
+  .invoice-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .invoice-section p {
     font-size: 0.875rem;
-    color: var(--fg-tertiary);
-    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 2px;
+  }
+
+  .invoice-label {
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+  }
+
+  .invoice-parties {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .invoice-signature {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-secondary);
+  }
+
+  @media (max-width: 480px) {
+    .invoice-parties {
+      grid-template-columns: 1fr;
+    }
+
+    .invoice-preview {
+      padding: var(--space-4);
+    }
   }
 </style>

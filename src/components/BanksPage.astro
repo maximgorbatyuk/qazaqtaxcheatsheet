@@ -43,6 +43,100 @@ import banks from '../data/banks.json';
   </div>
 
   <p class="result-count" id="result-count" aria-live="polite"></p>
+
+  <p class="note"><em>Disclaimer! Все описанные плюсы и минусы субъективны, поэтому у вас может быть иной опыт.
+  Будем рады, если поделитесь своим опытом.</em></p>
+
+  <h2>Halyk Onlinebank.kz</h2>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Плюсы</th>
+          <th>Минусы</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cell-center">1</td>
+          <td>Вывод валюты можно сделать переводом на долларовый счет в мультивалютной карте для физлиц</td>
+          <td>Сложный интерфейс онлайнбанкинга для десктопа</td>
+        </tr>
+        <tr>
+          <td class="cell-center">2</td>
+          <td>Валютный контроль в мобильном приложении</td>
+          <td>Авторизация в мобильном приложении часто сбрасывается, и приходится снова проходить видеоверификацию с документом</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Kaspi Pay</h2>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Плюсы</th>
+          <th>Минусы</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cell-center">1</td>
+          <td>Валютный контроль в МП</td>
+          <td>Вывести кэш только в тенге</td>
+        </tr>
+        <tr>
+          <td class="cell-center">2</td>
+          <td>Платежи в бюджет в МП</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>How to: вывод денег с Halyk Onlinebank на карту ФЛ</h2>
+  <p>Onlinebank.kz → Переводы в валюте → Создать → Внутрибанковский валютный перевод</p>
+  <p>Пример заполненной формы:</p>
+  <figure class="screenshot">
+    <img src="/images/banks-halyk-transfer.jpg" alt="Пример заполненной формы внутрибанковского валютного перевода" width="959" height="1259" loading="lazy" />
+  </figure>
+
+  <h2>Подписание переводов в Халык Онлайнбанке</h2>
+  <p><strong>2024-04-16.</strong> Подписание в старой версии онлайнбанка не работает, только СМС. Что делать?</p>
+  <p>Пуши на подписание в онлайнбанке работают, но нетривиально. Флоу такой:</p>
+  <ol>
+    <li>Пререквизит: вы уже имеете на счету деньги, ВК не рассматриваем тут</li>
+    <li>Заходим на старую версию онлайнбанка. Как угодно: СМС, аутентификатор</li>
+    <li>Заходим в переводы на карту</li>
+    <li>Создаем перевод на любую сумму</li>
+    <li>Дожидаемся, когда появляется в списке на подписание</li>
+    <li>Выходим из старой версии онлайнбанка</li>
+    <li>Заходим на новую версию онлайнбанка. Там только аутентификатор</li>
+    <li>Видим на главной, что есть 1 документ на подписание</li>
+    <li>Заходим в документы на подписание — видим тот самый внутрибанковский перевод, созданный в старой версии</li>
+    <li>Выбираем чекбоксом его</li>
+    <li>Справа кнопка «Подписать» становится активной. Кликаем на нее</li>
+    <li>Появляется модалка с вводом цифр</li>
+    <li>В мобильное приложение приходит пуш с цифрами для ввода</li>
+    <li>Вводим эти цифры — документ подписан</li>
+  </ol>
+
+  <h2>Реквизиты банков</h2>
+  <h3>Jusan</h3>
+  <div class="requisites">
+    <p><strong>Клиент:</strong> &lt;your_full_name&gt;</p>
+    <p><strong>ИИН:</strong> &lt;your IIN&gt;</p>
+    <p><strong>Банк получатель:</strong> АО "Jusan Bank"</p>
+    <p><strong>БИК:</strong> TSESKZKA</p>
+    <p><strong>БИН:</strong> 920140000084</p>
+    <p><strong>Казахстанский тенге:</strong> KZ16998PB00005081433</p>
+    <p><strong>Доллар США:</strong> KZ86998PB00005081434</p>
+    <p><strong>Евро:</strong> KZ59998PB00005081435</p>
+    <p><strong>Китайский юань:</strong> KZ56998PB00005081489</p>
+  </div>
 </ContentPage>
 
 <style>
@@ -101,6 +195,19 @@ import banks from '../data/banks.json';
     font-size: 0.8125rem;
     color: var(--fg-tertiary);
     min-height: 1.2em;
+  }
+
+  .requisites {
+    padding: var(--space-5);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    background: var(--bg-secondary);
+  }
+
+  .requisites p {
+    font-size: 0.9375rem;
+    margin-bottom: 2px;
+    line-height: 1.6;
   }
 </style>
 

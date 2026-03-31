@@ -2,56 +2,100 @@
 import ContentPage from './ContentPage.astro';
 ---
 
-<ContentPage title="Как зарегистрироваться на упрощенку">
+<ContentPage title="Как зарегистрироваться на упрощенку в 2026 году">
   <p class="intro">
     Пошаговая инструкция по постановке на упрощенный режим налогообложения через портал КГД.
   </p>
+  <p class="note"><em>Инструкция содержит скриншоты, сделанные на 1 января 2026 года. Надеемся, что изменения дизайна сайта,
+  если таковы будут, не сломают алгоритм действий.</em></p>
 
   <div class="steps">
     <div class="step">
-      <div class="step-number" aria-hidden="true">1</div>
       <div class="step-content">
-        <h2 class="step-title">Зайти на сайт</h2>
+        <h2 class="step-title">1. Зайти на сайт налогоплательщика</h2>
         <p class="step-text">
           Перейдите на <a href="https://knp.kgd.gov.kz/signin" target="_blank" rel="noopener noreferrer" class="link">knp.kgd.gov.kz/signin</a>
-          и авторизуйтесь с помощью ЭЦП (электронная цифровая подпись).
+          — заходите в Кабинет ИСНА своими ЭЦП ключами.
         </p>
+        <figure class="screenshot">
+          <img src="/images/reg-step1-login.png" alt="Страница авторизации knp.kgd.gov.kz" width="1126" height="556" loading="lazy" />
+        </figure>
       </div>
     </div>
 
     <div class="step">
-      <div class="step-number" aria-hidden="true">2</div>
       <div class="step-content">
-        <h2 class="step-title">Нажимаем «Подать документ»</h2>
+        <h2 class="step-title">2. Нажимаем «Подать документ»</h2>
         <p class="step-text">
-          После авторизации найдите кнопку «Подать документ» или «Подать уведомление» в личном кабинете.
+          После авторизации найдите кнопку «Подать документ» в личном кабинете.
         </p>
+        <figure class="screenshot">
+          <img src="/images/reg-step2-submit.png" alt="Кнопка «Подать документ» в личном кабинете" width="1078" height="661" loading="lazy" />
+        </figure>
+        <figure class="screenshot">
+          <img src="/images/reg-step2-list.png" alt="Список документов для подачи" width="1429" height="358" loading="lazy" />
+        </figure>
       </div>
     </div>
 
     <div class="step">
-      <div class="step-number" aria-hidden="true">3</div>
       <div class="step-content">
-        <h2 class="step-title">Выбираем форму</h2>
+        <h2 class="step-title">3. Выбираем форму</h2>
         <p class="step-text">
-          Выберите <strong>Форму 4</strong> — «Уведомление о применяемом режиме налогообложения».
-          Это уведомление о том, что вы хотите работать на упрощенном режиме.
+          На странице 4 — «Уведомление о применяемом режиме налогообложения» — заходим.
+          Поиск по названию не работает. Заполняем и отправляем форму.
         </p>
+        <figure class="screenshot">
+          <img src="/images/reg-step3-form4.png" alt="Страница выбора формы уведомления" width="1706" height="1690" loading="lazy" />
+        </figure>
       </div>
     </div>
 
     <div class="step">
-      <div class="step-number" aria-hidden="true">4</div>
       <div class="step-content">
-        <h2 class="step-title">Заполняем и отправляем</h2>
+        <h2 class="step-title">4. Заполнение</h2>
         <p class="step-text">
           Заполните все обязательные поля формы. Укажите режим — «Упрощенная декларация».
-          Выберите дату начала применения режима. Подпишите ЭЦП и отправьте.
         </p>
+        <figure class="screenshot">
+          <img src="/images/reg-step4-fill.png" alt="Заполнение формы уведомления" width="2048" height="1195" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-content">
+        <h2 class="step-title">5. Выбираем УГД</h2>
         <p class="step-text">
-          После отправки уведомление будет обработано. Обычно это занимает 1-3 рабочих дня.
-          Статус можно отслеживать в личном кабинете.
+          Выбираем свое УГД. У автора документации это УГД по алмалинскому району Алматы.
         </p>
+        <figure class="screenshot">
+          <img src="/images/reg-step5-ugd.png" alt="Выбор УГД (управление государственных доходов)" width="2048" height="1150" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-content">
+        <h2 class="step-title">6. Предпросмотр заявки</h2>
+        <p class="step-text">
+          Проверьте данные перед отправкой.
+        </p>
+        <figure class="screenshot">
+          <img src="/images/reg-step6-preview.png" alt="Предпросмотр заявки перед отправкой" width="2048" height="1170" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-content">
+        <h2 class="step-title">7. Подписываем и отправляем</h2>
+        <p class="step-text">
+          Подписываем своим ЭЦП и отправляем. Убеждаемся, что документ принят.
+        </p>
+        <figure class="screenshot">
+          <img src="/images/reg-step7-confirm.png" alt="Подтверждение принятия документа" width="1562" height="534" loading="lazy" />
+        </figure>
       </div>
     </div>
   </div>
@@ -60,6 +104,44 @@ import ContentPage from './ContentPage.astro';
     <h2 class="section-heading">Вопросы</h2>
 
     <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-question">Что делать, если ответ пришел «НП уже имеет активный режим налогообложения»</summary>
+        <div class="faq-answer">
+          <figure class="screenshot">
+            <img src="/images/reg-faq-error.png" alt="Ошибка: НП уже имеет активный режим налогообложения" width="1277" height="617" loading="lazy" />
+          </figure>
+          <p>Прежде всего — не паниковать. Случались ситуации, когда ИП переводили автоматом на упрощенку без
+          заявления/уведомления человека и повторные уведомления заканчиваются такой ошибкой.</p>
+          <p>Загрузите приложение <strong>E-Salyq Business</strong> и проверьте свой статус в профиле. Должно быть так, если вы на упрощенке:</p>
+          <div class="mobile-screenshots">
+            <figure class="screenshot">
+              <img src="/images/reg-faq-esalyq1.jpg" alt="E-Salyq Business — профиль ИП, часть 1" width="589" height="1280" loading="lazy" />
+            </figure>
+            <figure class="screenshot">
+              <img src="/images/reg-faq-esalyq2.jpg" alt="E-Salyq Business — профиль ИП, часть 2" width="589" height="1280" loading="lazy" />
+            </figure>
+          </div>
+          <p>Если уже стоит такой статус, то ничего делать не нужно. Для собственного спокойствия проверьте статус
+          еще раз ближе к 1 марта.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Как проверить, что статус упрощенки присвоен?</summary>
+        <div class="faq-answer">
+          <p>Заходим на сайт <a href="https://knp.kgd.gov.kz/signin" target="_blank" rel="noopener noreferrer" class="link">knp.kgd.gov.kz/signin</a>
+          и переходим в профиль.</p>
+          <figure class="screenshot">
+            <img src="/images/reg-faq-profile.png" alt="Профиль в кабинете КГД" width="2048" height="1015" loading="lazy" />
+          </figure>
+          <p>Скроллим в самый низ и ищем вот такой блок:</p>
+          <figure class="screenshot">
+            <img src="/images/reg-faq-status.png" alt="Блок с режимом налогообложения в профиле" width="1638" height="872" loading="lazy" />
+          </figure>
+          <p>Если тип содержит слова «упрощеной декларации», значит ИП на упрощенке.</p>
+        </div>
+      </details>
+
       <details class="faq-item">
         <summary class="faq-question">Когда можно подать уведомление?</summary>
         <div class="faq-answer">
@@ -97,31 +179,10 @@ import ContentPage from './ContentPage.astro';
   }
 
   .step {
-    display: flex;
-    gap: var(--space-4);
     padding: var(--space-5) var(--space-6);
     border: 1px solid var(--border-secondary);
     border-radius: var(--radius-lg);
     background: var(--bg-secondary);
-  }
-
-  .step-number {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--bg-primary);
-    font-weight: 700;
-    font-size: 1rem;
-  }
-
-  .step-content {
-    flex: 1;
-    min-width: 0;
   }
 
   .step-title {
@@ -135,7 +196,7 @@ import ContentPage from './ContentPage.astro';
     font-size: 1rem;
     color: var(--fg-secondary);
     line-height: var(--line-height-body);
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
   }
 
   .step-text:last-child {
@@ -146,10 +207,16 @@ import ContentPage from './ContentPage.astro';
     margin-top: var(--space-2);
   }
 
+  .mobile-screenshots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    max-width: 600px;
+  }
+
   @media (max-width: 480px) {
-    .step {
-      flex-direction: column;
-      gap: var(--space-3);
+    .mobile-screenshots {
+      grid-template-columns: 1fr;
     }
   }
 </style>

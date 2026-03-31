@@ -2,117 +2,43 @@
 import ContentPage from './ContentPage.astro';
 
 const links = [
-  {
-    url: 'https://mybuh.kz',
-    name: 'mybuh.kz',
-    description: 'Калькулятор налогов ИП на упрощенке. Помогает рассчитать ежемесячные платежи и ИПН.',
-  },
-  {
-    url: 'https://egov.kz',
-    name: 'egov.kz',
-    description: 'Портал электронного правительства. Оплата налогов, проверка задолженностей, госуслуги.',
-  },
-  {
-    url: 'https://cabinet.kgd.gov.kz',
-    name: 'cabinet.kgd.gov.kz',
-    description: 'Кабинет налогоплательщика. Просмотр начислений, задолженностей, истории платежей.',
-  },
-  {
-    url: 'https://cabinet.salyk.kz',
-    name: 'cabinet.salyk.kz',
-    description: 'Подача формы 910 (упрощенная декларация) и других форм налоговой отчетности.',
-  },
-  {
-    url: 'https://uchet.kz',
-    name: 'uchet.kz',
-    description: 'Курсы валют Национального банка РК. Используйте для конвертации валютного дохода в тенге.',
-  },
-  {
-    url: 'https://esf.gov.kz',
-    name: 'esf.gov.kz',
-    description: 'Портал электронных счетов-фактур (ЭСФ). Для выписки ЭСФ контрагентам при необходимости.',
-  },
-  {
-    url: 'https://kompra.kz',
-    name: 'kompra.kz',
-    description: 'Проверка ИП и компаний. Информация о контрагентах, налоговой задолженности, судебных делах.',
-  },
+  { url: 'https://mybuh.kz', name: 'mybuh.kz', description: 'Калькулятор налогов ИП на упрощенке' },
+  { url: 'https://egov.kz', name: 'egov.kz', description: 'Оплата налогов, проверка задолженностей, госуслуги' },
+  { url: 'https://cabinet.kgd.gov.kz', name: 'cabinet.kgd.gov.kz', description: 'Кабинет налогоплательщика: начисления, задолженности, история' },
+  { url: 'https://cabinet.salyk.kz', name: 'cabinet.salyk.kz', description: 'Подача формы 910 и других форм налоговой отчетности' },
+  { url: 'https://uchet.kz', name: 'uchet.kz', description: 'Курсы валют Национального банка РК' },
+  { url: 'https://esf.gov.kz', name: 'esf.gov.kz', description: 'Портал электронных счетов-фактур (ЭСФ)' },
+  { url: 'https://kompra.kz', name: 'kompra.kz', description: 'Проверка ИП и компаний, контрагентов, судебных дел' },
 ];
 ---
 
-<ContentPage title="Полезные ссылки">
+<ContentPage title="Полезное для разработчиков">
   <p class="intro">
-    Подборка ссылок на государственные порталы и полезные сервисы для ведения ИП на упрощенке.
+    Подборка ссылок, сервисов и инструментов для ведения ИП на упрощенке.
   </p>
 
-  <div class="links-grid">
-    {links.map((link) => (
-      <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card">
-        <span class="link-name">{link.name}</span>
-        <span class="link-desc">{link.description}</span>
-        <span class="link-arrow" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </span>
-      </a>
-    ))}
+  <h2>Полезные сервисы</h2>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Ссылка</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody>
+        {links.map((link) => (
+          <tr>
+            <td><a href={link.url} target="_blank" rel="noopener noreferrer" class="link">{link.name}</a></td>
+            <td>{link.description}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </div>
+
+  <h2>Как получить подтверждение аккаунта Google Developer</h2>
+  <p>По ссылке ниже собраны сообщения из чата Android-разработчиков, которые рассказывают,
+  как им удалось подтвердить свою личность для аккаунта Google Developer.</p>
+  <p><a href="https://telegra.ph/Podtverzhdenie-akkaunt-Google-developer-07-28-2" target="_blank" rel="noopener noreferrer" class="link">telegra.ph — Подтверждение аккаунта Google Developer</a></p>
 </ContentPage>
-
-<style>
-  .links-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .link-card {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    gap: var(--space-1) var(--space-4);
-    padding: var(--space-5) var(--space-6);
-    border: 1px solid var(--border-secondary);
-    border-radius: var(--radius-lg);
-    background: var(--bg-secondary);
-    box-shadow: var(--shadow-sm);
-    text-decoration: none;
-    transition: border-color var(--transition-default), background var(--transition-default);
-  }
-
-  .link-card:hover {
-    border-color: var(--accent);
-    background: var(--bg-tertiary);
-  }
-
-  .link-name {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--link);
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .link-desc {
-    font-size: 0.9375rem;
-    color: var(--fg-secondary);
-    line-height: 1.4;
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .link-arrow {
-    grid-column: 2;
-    grid-row: 1 / -1;
-    align-self: center;
-    color: var(--fg-tertiary);
-    transition: color var(--transition-default), transform var(--transition-default);
-  }
-
-  .link-card:hover .link-arrow {
-    color: var(--accent);
-    transform: translate(2px, -2px);
-  }
-</style>

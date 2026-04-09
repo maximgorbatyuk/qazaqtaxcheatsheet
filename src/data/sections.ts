@@ -13,6 +13,7 @@ export const sections: Section[] = [
   { title: 'Пример инвойса', desc: 'Шаблон инвойса для выписывания компании', path: '/invoice/', icon: '📝' },
   { title: 'Как получить УНК', desc: 'Учетный номер контракта для валютного контроля', path: '/unk/', icon: '📑' },
   { title: 'Банки для ИП', desc: 'Что выбрать и как работать с банками', path: '/banks/', icon: '🏦' },
+  { title: 'Доходы с Apple AppStore', desc: 'Инвойсы, валютный контроль и контракт с Apple', path: '/apple-appstore/', icon: '🍎' },
   { title: 'ИП в Грузии', desc: 'Сравнение с Грузией (TLDR: не советуем)', path: '/georgia/', icon: '🚈' },
   { title: 'Полезное для разработчиков', desc: 'Ссылки, сервисы и инструменты для ИП на удаленке', path: '/useful-for-devs/', icon: '🔗' },
 ];

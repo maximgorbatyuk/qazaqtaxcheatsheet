@@ -7,4 +7,6 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+Content-Signal: ai-train=no, search=yes, ai-input=no
+
 Sitemap: https://qazaqtaxcheatsheet.fyi/sitemap.xml

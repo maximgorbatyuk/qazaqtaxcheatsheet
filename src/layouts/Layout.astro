@@ -42,6 +42,10 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 		<meta name="keywords" content="ИП, упрощенка, УСН, Казахстан, налоги, регистрация, форма 910, валютный контроль, разработчик, удаленка, фриланс, ОСМС, ОПВ, ИПН, МЗП, Kazakhstan, tax, IP, simplified taxation" />
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href={canonicalUrl} />
+		<link rel="api-catalog" href="/.well-known/api-catalog" />
+		<link rel="service-desc" href="/api/openapi.json" type="application/openapi+json" />
+		<link rel="service-doc" href="/docs/api" />
+		<link rel="status" href="/api/status" />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={fullTitle} />
@@ -224,6 +228,75 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 	}
 
 	document.addEventListener('DOMContentLoaded', initAnchors);
+</script>
+
+<script>
+	const registerWebMcpContext = (): void => {
+		const modelContext = (navigator as Navigator & {
+			modelContext?: {
+				provideContext: (context: {
+					tools: Array<{
+						name: string;
+						description: string;
+						inputSchema: Record<string, unknown>;
+						execute: (input: Record<string, unknown>) => Promise<unknown>;
+					}>;
+				}) => void;
+			};
+		}).modelContext;
+
+		if (!modelContext?.provideContext) {
+			return;
+		}
+
+		try {
+			modelContext.provideContext({
+				tools: [
+					{
+						name: 'open_section',
+						description: 'Navigate to a site section or route by path or hash fragment.',
+						inputSchema: {
+							type: 'object',
+							properties: {
+								target: {
+									type: 'string',
+									description: 'Relative path like /faq/ or hash like #nalogi.',
+								},
+							},
+							required: ['target'],
+							additionalProperties: false,
+						},
+						execute: async (input) => {
+							const target = typeof input.target === 'string' ? input.target : '/';
+							window.location.assign(target);
+							return { ok: true, navigatedTo: target };
+						},
+					},
+					{
+						name: 'copy_page_link',
+						description: 'Copy the current page URL to clipboard for sharing.',
+						inputSchema: {
+							type: 'object',
+							properties: {},
+							additionalProperties: false,
+						},
+						execute: async () => {
+							await navigator.clipboard.writeText(window.location.href);
+							return { ok: true, copied: window.location.href };
+						},
+					},
+				],
+			});
+		} catch (error) {
+			console.warn('WebMCP context registration failed', error);
+		}
+	};
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', registerWebMcpContext);
+	} else {
+		registerWebMcpContext();
+	}
 </script>
 
 <style is:global>

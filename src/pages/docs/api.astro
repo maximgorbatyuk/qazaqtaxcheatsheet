@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="API документация">
+	<section class="api-docs">
+		<div class="container">
+			<h1>API документация</h1>
+			<p>
+				Этот сайт предоставляет минимальные machine-readable endpoints для автоматического
+				обнаружения агентами и сервисами.
+			</p>
+
+			<h2>Endpoints</h2>
+			<ul>
+				<li><a href="/api/status">/api/status</a> - текущий статус сервиса</li>
+				<li><a href="/api/openapi.json">/api/openapi.json</a> - OpenAPI спецификация</li>
+				<li><a href="/.well-known/api-catalog">/.well-known/api-catalog</a> - API catalog (RFC 9727)</li>
+			</ul>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.api-docs {
+		padding: var(--space-7) var(--space-4);
+	}
+
+	.container {
+		max-width: var(--reading-width);
+		margin: 0 auto;
+	}
+
+	h1 {
+		font-size: clamp(1.75rem, 3vw, 2.5rem);
+		margin-bottom: var(--space-4);
+	}
+
+	h2 {
+		font-size: 1.4rem;
+		margin: var(--space-6) 0 var(--space-3);
+	}
+
+	p {
+		color: var(--fg-secondary);
+		margin-bottom: var(--space-4);
+	}
+
+	ul {
+		padding-left: 1.2rem;
+	}
+
+	li {
+		color: var(--fg-secondary);
+		margin-bottom: var(--space-2);
+	}
+</style>

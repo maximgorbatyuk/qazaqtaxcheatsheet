@@ -2,6 +2,7 @@
 import ContentPage from './ContentPage.astro';
 import Callout from './Callout.astro';
 import ImageModal from './ImageModal.astro';
+import PdfModal from './PdfModal.astro';
 
 const agreementImage = '/images/upwork/Upwork-onlinebank-agreement.jpg';
 ---
@@ -52,6 +53,11 @@ const agreementImage = '/images/upwork/Upwork-onlinebank-agreement.jpg';
     <li>Прикрепить в поле внизу <a target="_blank" href="/files/upwork/Upwork-user-agreement-2026.pdf">договор Upwork</a></li>
     <li>Прикрепить инвойс (подробнее ниже)</li>
   </ul>
+  <PdfModal
+    src="/files/upwork/Upwork-user-agreement-2026.pdf"
+    title="Договор Upwork"
+    caption="Upwork User Agreement, 2026"
+  />
   <ImageModal
     src={agreementImage}
     alt="Пример заполненного договора в Onlinebank"
@@ -72,6 +78,11 @@ const agreementImage = '/images/upwork/Upwork-onlinebank-agreement.jpg';
     можно найти по ссылке <a target="_blank" href="/files/upwork/Confirmation_of_Services_Form_RU-EN.pdf">Confirmation of Services Form (RU-EN)</a>.
     Порядок действий:
   </p>
+  <PdfModal
+    src="/files/upwork/Confirmation_of_Services_Form_RU-EN.pdf"
+    title="Confirmation of Services Form (RU-EN)"
+    caption="Пример инвойса и перевода для валютного контроля"
+  />
   <ol>
     <li>Скачать инвойс от Upwork или воспользоваться примером (заменив номер регистрации на ваш)</li>
     <li>Указать сумму перевода/контракта</li>

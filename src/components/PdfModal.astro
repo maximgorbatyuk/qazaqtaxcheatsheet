@@ -1,0 +1,245 @@
+---
+interface Props {
+  src: string;
+  title: string;
+  caption?: string;
+}
+
+const { src, title, caption } = Astro.props;
+const openLabel = `Открыть ${title}`;
+---
+
+<div class="pdf-modal-root" data-pdf-modal-root>
+  <button class="pdf-modal-preview" type="button" data-pdf-modal-open aria-label={openLabel}>
+    <span class="pdf-modal-preview__badge" aria-hidden="true">PDF</span>
+    <span class="pdf-modal-preview__content">
+      <span class="pdf-modal-preview__title">{title}</span>
+      {caption && <span class="pdf-modal-preview__caption">{caption}</span>}
+    </span>
+  </button>
+
+  <dialog class="pdf-modal-dialog" data-pdf-modal-dialog aria-label={title}>
+    <header class="pdf-modal-dialog__header">
+      <p class="pdf-modal-dialog__title">{title}</p>
+      <div class="pdf-modal-dialog__actions">
+        <a class="pdf-modal-dialog__open" href={src} target="_blank" rel="noopener noreferrer">
+          Открыть PDF
+        </a>
+        <button
+          class="pdf-modal-dialog__close"
+          type="button"
+          data-pdf-modal-close
+          aria-label="Закрыть PDF"
+        >
+          &times;
+        </button>
+      </div>
+    </header>
+    <iframe class="pdf-modal-dialog__frame" src={src} title={title} loading="lazy"></iframe>
+  </dialog>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pdf-modal-root]').forEach((root) => {
+    if (root.dataset.pdfModalInitialized === 'true') return;
+
+    const dialog = root.querySelector<HTMLDialogElement>('[data-pdf-modal-dialog]');
+    const openButton = root.querySelector<HTMLButtonElement>('[data-pdf-modal-open]');
+    const closeButton = root.querySelector<HTMLButtonElement>('[data-pdf-modal-close]');
+    if (!dialog || !openButton) return;
+
+    root.dataset.pdfModalInitialized = 'true';
+
+    openButton.addEventListener('click', () => {
+      dialog.showModal();
+    });
+
+    closeButton?.addEventListener('click', () => {
+      dialog.close();
+    });
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+  });
+</script>
+
+<style>
+  .pdf-modal-root {
+    margin-bottom: var(--space-4);
+  }
+
+  .pdf-modal-preview {
+    display: inline-flex;
+    width: min(100%, 28rem);
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    cursor: zoom-in;
+    text-align: left;
+    color: var(--fg-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition:
+      border-color var(--transition-default),
+      box-shadow var(--transition-default),
+      transform var(--transition-default);
+  }
+
+  .pdf-modal-preview:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  .pdf-modal-preview__badge {
+    display: grid;
+    flex: 0 0 3rem;
+    width: 3rem;
+    aspect-ratio: 1;
+    place-items: center;
+    color: #fff;
+    background: var(--error);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .pdf-modal-preview__content {
+    display: grid;
+    gap: var(--space-1);
+    min-width: 0;
+  }
+
+  .pdf-modal-preview__title {
+    color: var(--fg-primary);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .pdf-modal-preview__caption {
+    color: var(--fg-tertiary);
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .pdf-modal-dialog {
+    width: min(94vw, 72rem);
+    height: min(90vh, 56rem);
+    margin: auto;
+    padding: var(--space-4);
+    color: var(--fg-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .pdf-modal-dialog[open] {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+
+  .pdf-modal-dialog::backdrop {
+    background: rgba(2, 8, 18, 0.78);
+  }
+
+  .pdf-modal-dialog__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .pdf-modal-dialog__title {
+    min-width: 0;
+    color: var(--fg-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .pdf-modal-dialog__actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .pdf-modal-dialog__actions .pdf-modal-dialog__open {
+    display: inline-flex;
+    min-height: 2.5rem;
+    align-items: center;
+    padding: 0 var(--space-3);
+    color: #fff;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  .pdf-modal-dialog__actions .pdf-modal-dialog__open:hover {
+    color: #fff;
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+
+  .pdf-modal-dialog__close {
+    width: 2.5rem;
+    aspect-ratio: 1;
+    cursor: pointer;
+    color: var(--fg-primary);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-secondary);
+    border-radius: 999px;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .pdf-modal-dialog__close:hover {
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .pdf-modal-dialog__frame {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-sm);
+  }
+
+  @media (max-width: 640px) {
+    .pdf-modal-dialog {
+      width: 94vw;
+      height: 86vh;
+      padding: var(--space-3);
+    }
+
+    .pdf-modal-dialog__header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .pdf-modal-dialog__actions {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .pdf-modal-dialog__open {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+</style>

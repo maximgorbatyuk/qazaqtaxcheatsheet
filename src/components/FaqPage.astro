@@ -1,5 +1,6 @@
 ---
 import ContentPage from './ContentPage.astro';
+import ImagePreview from './ImagePreview.astro';
 import Callout from './Callout.astro';
 ---
 
@@ -160,21 +161,30 @@ import Callout from './Callout.astro';
         <p>Идем на сайт <a href="https://cabinet.kgd.gov.kz" target="_blank" rel="noopener noreferrer" class="link">cabinet.kgd.gov.kz</a>, далее:</p>
 
         <p>1. Формы налоговой отчетности → Заполнение новой формы</p>
-        <figure class="screenshot">
-          <img src="/images/faq-form270-step1.png" alt="Шаг 1: Формы налоговой отчетности — Заполнение новой формы" width="792" height="433" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/faq-form270-step1.png"
+          alt="Шаг 1: Формы налоговой отчетности — Заполнение новой формы"
+          width={792}
+          height={433}
+        />
 
         <p>2. Ищем форму 270 в списке за год прошлого периода (заполняя в 2025, нужно выбрать год 2024)</p>
-        <figure class="screenshot">
-          <img src="/images/faq-form270-step2.png" alt="Шаг 2: Поиск формы 270 в списке" width="1024" height="726" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/faq-form270-step2.png"
+          alt="Шаг 2: Поиск формы 270 в списке"
+          width={1024}
+          height={726}
+        />
 
         <p>3. Заполняете личные поля (если не заполнены, но должны быть автоматом заполнены)</p>
 
         <p>4. Выбираете «первоначальная», если до этого заполняли только 250 форму. Вариант «очередная» для тех, кто уже подавал ранее 270 форму</p>
-        <figure class="screenshot">
-          <img src="/images/faq-form270-step4.png" alt="Шаг 4: Выбор типа формы — первоначальная или очередная" width="1024" height="464" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/faq-form270-step4.png"
+          alt="Шаг 4: Выбор типа формы — первоначальная или очередная"
+          width={1024}
+          height={464}
+        />
 
         <p>5. На странице вопросов про имущество зарубежом отмечаем свои варианты. Если ничего нет — оставляем галочки пустыми. В простонародье такая форма называется «нулевкой».</p>
         <p>6. Отправляем. Результат принятия в случае нулевки будет мгновенный, и форма в журнале будет обозначена как «не требующая разноски».</p>
@@ -252,9 +262,12 @@ import Callout from './Callout.astro';
         Получать зарплату с удаленки на карту ФЛ может привести к блокировке платежей.</em></p>
         <p>Может случиться так, что перевод заблокируют. Один из способов, который работал для банка RBK —
         написать в поддержку такого рода текст:</p>
-        <figure class="screenshot">
-          <img src="/images/faq-blocked-transfer.png" alt="Пример текста для поддержки банка при блокировке перевода" width="1280" height="1039" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/faq-blocked-transfer.png"
+          alt="Пример текста для поддержки банка при блокировке перевода"
+          width={1280}
+          height={1039}
+        />
         <p>Проблема с получением денег на карты ФЛ может возникнуть, когда налоговые органы любые входящие переводы
         начнут считать доходом и требовать облагать их налогом. Поэтому такой способ получения денег не рекомендуется.</p>
       </div>

@@ -20,7 +20,7 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 ---
 
 <!doctype html>
-<html lang="ru" data-theme="dark">
+<html lang="ru">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,15 +60,6 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 		<meta name="twitter:description" content={description} />
 
 		<title>{fullTitle}</title>
-
-		<script is:inline>
-			(function () {
-				const saved = localStorage.getItem('theme');
-				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-				const theme = saved || (prefersDark ? 'dark' : 'light');
-				document.documentElement.setAttribute('data-theme', theme);
-			})();
-		</script>
 
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
@@ -340,34 +331,8 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 		--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
 		--shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
 		--shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
-	}
 
-	/* ===== Dark Theme (default) ===== */
-	:root,
-	[data-theme='dark'] {
-		--bg-primary: #0E1623;
-		--bg-secondary: #152033;
-		--bg-tertiary: #1B2940;
-		--fg-primary: #EAF0F8;
-		--fg-secondary: #A9B7CB;
-		--fg-tertiary: #7A8DA3;
-		--border-primary: #2B3B56;
-		--border-secondary: #2B3B56;
-		--accent: #4D79C7;
-		--accent-hover: #5E89D6;
-		--link: #7EAAFF;
-		--success: #4FBF92;
-		--warning: #D5A14A;
-		--error: #E06C6C;
-		--info: #7EAAFF;
-		--gold: #FFD700;
-		--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
-		--shadow-md: 0 2px 8px rgba(0, 0, 0, 0.25);
-		--shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.3);
-	}
-
-	/* ===== Light Theme ===== */
-	[data-theme='light'] {
+		/* Colors */
 		--bg-primary: #F7F9FC;
 		--bg-secondary: #FFFFFF;
 		--bg-tertiary: #EEF3F8;
@@ -534,8 +499,6 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 		margin-bottom: var(--space-4);
-		border: 1px solid var(--border-secondary);
-		border-radius: var(--radius-lg);
 	}
 
 	.data-table {
@@ -567,7 +530,7 @@ const fullTitle = isHome ? title : `${title} | ${siteName}`;
 	}
 
 	.data-table tbody tr:hover {
-		background: var(--bg-secondary);
+		background: var(--bg-tertiary);
 	}
 
 	.cell-center {

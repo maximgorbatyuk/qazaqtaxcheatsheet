@@ -1,5 +1,6 @@
 ---
 import ContentPage from './ContentPage.astro';
+import ImagePreview from './ImagePreview.astro';
 ---
 
 <ContentPage title="FAQ по валютному контролю">
@@ -57,9 +58,12 @@ import ContentPage from './ContentPage.astro';
     <details class="faq-item">
       <summary class="faq-question">В форме валютного контроля появились поля КНП и КОД. Что делать?</summary>
       <div class="faq-answer">
-        <figure class="screenshot">
-          <img src="/images/currency-control-form.jpg" alt="Форма валютного контроля с полями КНП и КОД" width="917" height="264" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/currency-control-form.jpg"
+          alt="Форма валютного контроля с полями КНП и КОД"
+          width={917}
+          height={264}
+        />
         <p>Заполняем <strong>851</strong> и <strong>27</strong>. Пояснения:</p>
         <ul class="info-list">
           <li>

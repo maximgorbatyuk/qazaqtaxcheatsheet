@@ -1,5 +1,6 @@
 ---
 import ContentPage from './ContentPage.astro';
+import ImagePreview from './ImagePreview.astro';
 import banks from '../data/banks.json';
 ---
 
@@ -100,9 +101,12 @@ import banks from '../data/banks.json';
   <h2>How to: вывод денег с Halyk Onlinebank на карту ФЛ</h2>
   <p>Onlinebank.kz → Переводы в валюте → Создать → Внутрибанковский валютный перевод</p>
   <p>Пример заполненной формы:</p>
-  <figure class="screenshot">
-    <img src="/images/banks-halyk-transfer.jpg" alt="Пример заполненной формы внутрибанковского валютного перевода" width="959" height="1259" loading="lazy" />
-  </figure>
+  <ImagePreview
+    src="/images/banks-halyk-transfer.jpg"
+    alt="Пример заполненной формы внутрибанковского валютного перевода"
+    width={959}
+    height={1259}
+  />
 
   <h2>Подписание переводов в Халык Онлайнбанке</h2>
   <p><strong>2024-04-16.</strong> Подписание в старой версии онлайнбанка не работает, только СМС. Что делать?</p>

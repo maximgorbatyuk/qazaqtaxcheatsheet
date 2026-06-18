@@ -1,5 +1,6 @@
 ---
 import ContentPage from './ContentPage.astro';
+import ImagePreview from './ImagePreview.astro';
 import Callout from './Callout.astro';
 ---
 
@@ -22,9 +23,12 @@ import Callout from './Callout.astro';
           Перейдите на <a href="https://knp.kgd.gov.kz/signin" target="_blank" rel="noopener noreferrer" class="link">knp.kgd.gov.kz/signin</a>
           — заходите в Кабинет ИСНА своими ЭЦП ключами.
         </p>
-        <figure class="screenshot">
-          <img src="/images/reg-step1-login.png" alt="Страница авторизации knp.kgd.gov.kz" width="1126" height="556" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/reg-step1-login.png"
+          alt="Страница авторизации knp.kgd.gov.kz"
+          width={1126}
+          height={556}
+        />
       </div>
     </div>
 
@@ -34,12 +38,18 @@ import Callout from './Callout.astro';
         <p class="step-text">
           После авторизации найдите кнопку «Подать документ» в личном кабинете.
         </p>
-        <figure class="screenshot">
-          <img src="/images/reg-step2-submit.png" alt="Кнопка «Подать документ» в личном кабинете" width="1078" height="661" loading="lazy" />
-        </figure>
-        <figure class="screenshot">
-          <img src="/images/reg-step2-list.png" alt="Список документов для подачи" width="1429" height="358" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/reg-step2-submit.png"
+          alt="Кнопка «Подать документ» в личном кабинете"
+          width={1078}
+          height={661}
+        />
+        <ImagePreview
+          src="/images/reg-step2-list.png"
+          alt="Список документов для подачи"
+          width={1429}
+          height={358}
+        />
       </div>
     </div>
 
@@ -50,9 +60,12 @@ import Callout from './Callout.astro';
           На странице 4 — «Уведомление о применяемом режиме налогообложения» — заходим.
           Поиск по названию не работает. Заполняем и отправляем форму.
         </p>
-        <figure class="screenshot">
-          <img src="/images/reg-step3-form4.png" alt="Страница выбора формы уведомления" width="1706" height="1690" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/reg-step3-form4.png"
+          alt="Страница выбора формы уведомления"
+          width={1706}
+          height={1690}
+        />
       </div>
     </div>
 
@@ -62,9 +75,12 @@ import Callout from './Callout.astro';
         <p class="step-text">
           Заполните все обязательные поля формы. Укажите режим — «Упрощенная декларация».
         </p>
-        <figure class="screenshot">
-          <img src="/images/reg-step4-fill.png" alt="Заполнение формы уведомления" width="2048" height="1195" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/reg-step4-fill.png"
+          alt="Заполнение формы уведомления"
+          width={2048}
+          height={1195}
+        />
       </div>
     </div>
 
@@ -74,9 +90,12 @@ import Callout from './Callout.astro';
         <p class="step-text">
           Выбираем свое УГД. У автора документации это УГД по алмалинскому району Алматы.
         </p>
-        <figure class="screenshot">
-          <img src="/images/reg-step5-ugd.png" alt="Выбор УГД (управление государственных доходов)" width="2048" height="1150" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/reg-step5-ugd.png"
+          alt="Выбор УГД (управление государственных доходов)"
+          width={2048}
+          height={1150}
+        />
       </div>
     </div>
 
@@ -86,9 +105,12 @@ import Callout from './Callout.astro';
         <p class="step-text">
           Проверьте данные перед отправкой.
         </p>
-        <figure class="screenshot">
-          <img src="/images/reg-step6-preview.png" alt="Предпросмотр заявки перед отправкой" width="2048" height="1170" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/reg-step6-preview.png"
+          alt="Предпросмотр заявки перед отправкой"
+          width={2048}
+          height={1170}
+        />
       </div>
     </div>
 
@@ -98,9 +120,12 @@ import Callout from './Callout.astro';
         <p class="step-text">
           Подписываем своим ЭЦП и отправляем. Убеждаемся, что документ принят.
         </p>
-        <figure class="screenshot">
-          <img src="/images/reg-step7-confirm.png" alt="Подтверждение принятия документа" width="1562" height="534" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/reg-step7-confirm.png"
+          alt="Подтверждение принятия документа"
+          width={1562}
+          height={534}
+        />
       </div>
     </div>
   </div>
@@ -112,19 +137,28 @@ import Callout from './Callout.astro';
       <details class="faq-item">
         <summary class="faq-question">Что делать, если ответ пришел «НП уже имеет активный режим налогообложения»</summary>
         <div class="faq-answer">
-          <figure class="screenshot">
-            <img src="/images/reg-faq-error.png" alt="Ошибка: НП уже имеет активный режим налогообложения" width="1277" height="617" loading="lazy" />
-          </figure>
+          <ImagePreview
+            src="/images/reg-faq-error.png"
+            alt="Ошибка: НП уже имеет активный режим налогообложения"
+            width={1277}
+            height={617}
+          />
           <p>Прежде всего — не паниковать. Случались ситуации, когда ИП переводили автоматом на упрощенку без
           заявления/уведомления человека и повторные уведомления заканчиваются такой ошибкой.</p>
           <p>Загрузите приложение <strong>E-Salyq Business</strong> и проверьте свой статус в профиле. Должно быть так, если вы на упрощенке:</p>
           <div class="mobile-screenshots">
-            <figure class="screenshot">
-              <img src="/images/reg-faq-esalyq1.jpg" alt="E-Salyq Business — профиль ИП, часть 1" width="589" height="1280" loading="lazy" />
-            </figure>
-            <figure class="screenshot">
-              <img src="/images/reg-faq-esalyq2.jpg" alt="E-Salyq Business — профиль ИП, часть 2" width="589" height="1280" loading="lazy" />
-            </figure>
+            <ImagePreview
+              src="/images/reg-faq-esalyq1.jpg"
+              alt="E-Salyq Business — профиль ИП, часть 1"
+              width={589}
+              height={1280}
+            />
+            <ImagePreview
+              src="/images/reg-faq-esalyq2.jpg"
+              alt="E-Salyq Business — профиль ИП, часть 2"
+              width={589}
+              height={1280}
+            />
           </div>
           <p>Если уже стоит такой статус, то ничего делать не нужно. Для собственного спокойствия проверьте статус
           еще раз ближе к 1 марта.</p>
@@ -136,13 +170,19 @@ import Callout from './Callout.astro';
         <div class="faq-answer">
           <p>Заходим на сайт <a href="https://knp.kgd.gov.kz/signin" target="_blank" rel="noopener noreferrer" class="link">knp.kgd.gov.kz/signin</a>
           и переходим в профиль.</p>
-          <figure class="screenshot">
-            <img src="/images/reg-faq-profile.png" alt="Профиль в кабинете КГД" width="2048" height="1015" loading="lazy" />
-          </figure>
+          <ImagePreview
+            src="/images/reg-faq-profile.png"
+            alt="Профиль в кабинете КГД"
+            width={2048}
+            height={1015}
+          />
           <p>Скроллим в самый низ и ищем вот такой блок:</p>
-          <figure class="screenshot">
-            <img src="/images/reg-faq-status.png" alt="Блок с режимом налогообложения в профиле" width="1638" height="872" loading="lazy" />
-          </figure>
+          <ImagePreview
+            src="/images/reg-faq-status.png"
+            alt="Блок с режимом налогообложения в профиле"
+            width={1638}
+            height={872}
+          />
           <p>Если тип содержит слова «упрощеной декларации», значит ИП на упрощенке.</p>
         </div>
       </details>

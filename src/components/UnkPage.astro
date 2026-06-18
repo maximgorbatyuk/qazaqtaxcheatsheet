@@ -1,5 +1,6 @@
 ---
 import ContentPage from './ContentPage.astro';
+import ImagePreview from './ImagePreview.astro';
 ---
 
 <ContentPage title="Как получить учетный номер контракта (УНК)">
@@ -26,9 +27,12 @@ import ContentPage from './ContentPage.astro';
 
   <h3>2. Подписание документа</h3>
   <p>Подпиши получившийся документ через инструмент просмотра документов на macOS:</p>
-  <figure class="screenshot">
-    <img src="/images/unk-sign-macos.png" alt="Подписание PDF через просмотр документов на macOS" width="1870" height="1208" loading="lazy" />
-  </figure>
+  <ImagePreview
+    src="/images/unk-sign-macos.png"
+    alt="Подписание PDF через просмотр документов на macOS"
+    width={1870}
+    height={1208}
+  />
   <p>Попроси заказчика подписать контракт. Если такой возможности нет, то сделай это сам так же,
   как сделал подпись для себя (только никому не говори).</p>
 
@@ -36,14 +40,20 @@ import ContentPage from './ContentPage.astro';
   <p>Открывай <a href="https://onlinebank.kz" target="_blank" rel="noopener noreferrer" class="link">onlinebank.kz</a>.
   Если пользуешься другим банком для юрлиц, то эта инструкция по заполнению будет полезна и тебе — набор полей
   вряд ли сильно отличается.</p>
-  <figure class="screenshot">
-    <img src="/images/unk-onlinebank-menu.png" alt="Меню валютного контроля в Onlinebank" width="1442" height="536" loading="lazy" />
-  </figure>
+  <ImagePreview
+    src="/images/unk-onlinebank-menu.png"
+    alt="Меню валютного контроля в Onlinebank"
+    width={1442}
+    height={536}
+  />
 
   <p>Заполни поля формы таким образом:</p>
-  <figure class="screenshot">
-    <img src="/images/unk-onlinebank-form.png" alt="Форма регистрации контракта в Onlinebank" width="930" height="1280" loading="lazy" />
-  </figure>
+  <ImagePreview
+    src="/images/unk-onlinebank-form.png"
+    alt="Форма регистрации контракта в Onlinebank"
+    width={930}
+    height={1280}
+  />
   <ul>
     <li><strong>Номер контракта</strong> — заполняй, если у тебя таковой есть в договоре и он будет участвовать
     во входящих инвойсах от заказчика. В противном случае ставь галку «Номер контракта отсутствует»</li>
@@ -92,9 +102,12 @@ import ContentPage from './ContentPage.astro';
       <div class="faq-answer">
         <p>При регистрации контракта можно приложить два документа: оригинальный контракт с подписями и его перевод,
         где в конце нужно написать <strong>«Перевод выполнен с оригинала. Перевод верен»</strong> и ниже свою подпись с датой.</p>
-        <figure class="screenshot">
-          <img src="/images/unk-translation-tip.jpg" alt="Пример оформления перевода контракта" width="814" height="822" loading="lazy" />
-        </figure>
+        <ImagePreview
+          src="/images/unk-translation-tip.jpg"
+          alt="Пример оформления перевода контракта"
+          width={814}
+          height={822}
+        />
         <p><em>Спасибо пользователю <a href="https://t.me/attempttobebetter" target="_blank" rel="noopener noreferrer" class="link">t.me/attempttobebetter</a> за совет и скриншот.</em></p>
       </div>
     </details>

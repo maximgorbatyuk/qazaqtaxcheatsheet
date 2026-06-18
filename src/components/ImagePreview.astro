@@ -20,16 +20,16 @@ const dialogLabel = caption ?? alt;
 const openLabel = `Открыть ${dialogLabel} в большом размере`;
 ---
 
-<div class="image-modal-root" data-image-modal-root style={`--image-modal-thumbnail-width: ${thumbnailWidth};`}>
-  <figure class="image-modal-preview">
+<div class="image-preview-root" data-image-preview-root style={`--image-preview-thumbnail-width: ${thumbnailWidth};`}>
+  <figure class="image-preview">
     <button
-      class="image-modal-preview__button"
+      class="image-preview__button"
       type="button"
-      data-image-modal-open
+      data-image-preview-open
       aria-label={openLabel}
     >
       <img
-        class="image-modal-preview__image"
+        class="image-preview__image"
         src={src}
         alt={alt}
         width={width}
@@ -41,17 +41,17 @@ const openLabel = `Открыть ${dialogLabel} в большом размер�
     {caption && <figcaption>{caption}</figcaption>}
   </figure>
 
-  <dialog class="image-modal-dialog" data-image-modal-dialog aria-label={dialogLabel}>
+  <dialog class="image-preview-dialog" data-image-preview-dialog aria-label={dialogLabel}>
     <button
-      class="image-modal-dialog__close"
+      class="image-preview-dialog__close"
       type="button"
-      data-image-modal-close
+      data-image-preview-close
       aria-label="Закрыть изображение"
     >
       &times;
     </button>
     <img
-      class="image-modal-dialog__image"
+      class="image-preview-dialog__image"
       src={src}
       alt={alt}
       width={width}
@@ -63,15 +63,15 @@ const openLabel = `Открыть ${dialogLabel} в большом размер�
 </div>
 
 <script>
-  document.querySelectorAll<HTMLElement>('[data-image-modal-root]').forEach((root) => {
-    if (root.dataset.imageModalInitialized === 'true') return;
+  document.querySelectorAll<HTMLElement>('[data-image-preview-root]').forEach((root) => {
+    if (root.dataset.imagePreviewInitialized === 'true') return;
 
-    const dialog = root.querySelector<HTMLDialogElement>('[data-image-modal-dialog]');
-    const openButton = root.querySelector<HTMLButtonElement>('[data-image-modal-open]');
-    const closeButton = root.querySelector<HTMLButtonElement>('[data-image-modal-close]');
+    const dialog = root.querySelector<HTMLDialogElement>('[data-image-preview-dialog]');
+    const openButton = root.querySelector<HTMLButtonElement>('[data-image-preview-open]');
+    const closeButton = root.querySelector<HTMLButtonElement>('[data-image-preview-close]');
     if (!dialog || !openButton) return;
 
-    root.dataset.imageModalInitialized = 'true';
+    root.dataset.imagePreviewInitialized = 'true';
 
     openButton.addEventListener('click', () => {
       dialog.showModal();
@@ -90,17 +90,17 @@ const openLabel = `Открыть ${dialogLabel} в большом размер�
 </script>
 
 <style>
-  .image-modal-root {
+  .image-preview-root {
     margin-bottom: var(--space-4);
   }
 
-  .image-modal-preview {
+  .image-preview {
     margin-bottom: 0;
   }
 
-  .image-modal-preview__button {
+  .image-preview__button {
     display: block;
-    width: min(100%, var(--image-modal-thumbnail-width));
+    width: min(100%, var(--image-preview-thumbnail-width));
     padding: 0;
     overflow: hidden;
     cursor: zoom-in;
@@ -114,25 +114,25 @@ const openLabel = `Открыть ${dialogLabel} в большом размер�
       transform var(--transition-default);
   }
 
-  .image-modal-preview__button:hover {
+  .image-preview__button:hover {
     border-color: var(--accent);
     box-shadow: var(--shadow-md);
     transform: translateY(-1px);
   }
 
-  .image-modal-preview__image {
+  .image-preview__image {
     display: block;
     width: 100%;
     height: auto;
   }
 
-  .image-modal-preview figcaption {
+  .image-preview figcaption {
     margin-top: var(--space-2);
     color: var(--fg-tertiary);
     font-size: 0.875rem;
   }
 
-  .image-modal-dialog {
+  .image-preview-dialog {
     width: min(92vw, 74rem);
     max-height: 90vh;
     margin: auto;
@@ -144,16 +144,16 @@ const openLabel = `Открыть ${dialogLabel} в большом размер�
     box-shadow: var(--shadow-lg);
   }
 
-  .image-modal-dialog[open] {
+  .image-preview-dialog[open] {
     display: grid;
     gap: var(--space-4);
   }
 
-  .image-modal-dialog::backdrop {
+  .image-preview-dialog::backdrop {
     background: rgba(2, 8, 18, 0.78);
   }
 
-  .image-modal-dialog__close {
+  .image-preview-dialog__close {
     justify-self: end;
     width: 2.5rem;
     aspect-ratio: 1;
@@ -166,13 +166,13 @@ const openLabel = `Открыть ${dialogLabel} в большом размер�
     line-height: 1;
   }
 
-  .image-modal-dialog__close:hover {
+  .image-preview-dialog__close:hover {
     color: #fff;
     background: var(--accent);
     border-color: var(--accent);
   }
 
-  .image-modal-dialog__image {
+  .image-preview-dialog__image {
     display: block;
     width: auto;
     max-width: 100%;
@@ -183,16 +183,16 @@ const openLabel = `Открыть ${dialogLabel} в большом размер�
   }
 
   @media (max-width: 640px) {
-    .image-modal-preview__button {
+    .image-preview__button {
       width: min(100%, 14rem);
     }
 
-    .image-modal-dialog {
+    .image-preview-dialog {
       width: 94vw;
       padding: var(--space-3);
     }
 
-    .image-modal-dialog__image {
+    .image-preview-dialog__image {
       max-height: calc(90vh - 5.5rem);
     }
   }

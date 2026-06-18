@@ -10,24 +10,55 @@ const { title, description } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
-<div class="content-page">
-  <header class="content-header">
-    <h1 class="content-title">{title}</h1>
-    {description && <p class="content-description">{description}</p>}
-  </header>
+<div class="content-page-shell">
+  <article class="content-page">
+    <header class="content-header">
+      <h1 class="content-title">{title}</h1>
+      {description && <p class="content-description">{description}</p>}
+    </header>
 
-  <div class="content-body">
-    <slot />
+    <div class="content-body">
+      <slot />
+    </div>
+  </article>
+
+  <div class="content-page-nav">
+    <NextPageNav currentPath={currentPath} />
   </div>
-
-  <NextPageNav currentPath={currentPath} />
 </div>
 
 <style>
+  .content-page-shell {
+    --bg-secondary: #FFFFFF;
+    --bg-tertiary: #EEF3F8;
+    --fg-primary: #172033;
+    --fg-secondary: #4B5870;
+    --fg-tertiary: #6B7A8D;
+    --border-primary: #D7E0EA;
+    --border-secondary: #D7E0EA;
+    --accent: #163E72;
+    --accent-hover: #12355F;
+    --link: #1B4E8A;
+    --info: #1B4E8A;
+    --success: #1F7A5A;
+    --warning: #A66A12;
+    --error: #B44343;
+
+    width: min(var(--reading-width), calc(100% - var(--space-6)));
+    margin: var(--space-6) auto;
+    color: var(--fg-secondary);
+  }
+
   .content-page {
-    max-width: var(--reading-width);
-    margin: 0 auto;
-    padding: var(--space-8) var(--space-5);
+    padding: var(--space-7) var(--space-6);
+    background: #FFFFFF;
+    border: 1px solid var(--border-secondary);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .content-page-nav {
+    padding-inline: var(--space-6);
   }
 
   .content-header {
@@ -176,5 +207,20 @@ const currentPath = Astro.url.pathname;
   .content-body :global(strong) {
     color: var(--fg-primary);
     font-weight: 600;
+  }
+
+  @media (max-width: 640px) {
+    .content-page-shell {
+      width: calc(100% - var(--space-3));
+      margin: var(--space-2) auto var(--space-4);
+    }
+
+    .content-page {
+      padding: var(--space-5) var(--space-4);
+    }
+
+    .content-page-nav {
+      padding-inline: var(--space-4);
+    }
   }
 </style>

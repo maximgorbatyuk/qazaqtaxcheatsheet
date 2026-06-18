@@ -1,0 +1,199 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+  thumbnailWidth?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  caption,
+  thumbnailWidth = '18rem',
+} = Astro.props;
+const dialogLabel = caption ?? alt;
+const openLabel = `Открыть ${dialogLabel} в большом размере`;
+---
+
+<div class="image-modal-root" data-image-modal-root style={`--image-modal-thumbnail-width: ${thumbnailWidth};`}>
+  <figure class="image-modal-preview">
+    <button
+      class="image-modal-preview__button"
+      type="button"
+      data-image-modal-open
+      aria-label={openLabel}
+    >
+      <img
+        class="image-modal-preview__image"
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+      />
+    </button>
+    {caption && <figcaption>{caption}</figcaption>}
+  </figure>
+
+  <dialog class="image-modal-dialog" data-image-modal-dialog aria-label={dialogLabel}>
+    <button
+      class="image-modal-dialog__close"
+      type="button"
+      data-image-modal-close
+      aria-label="Закрыть изображение"
+    >
+      &times;
+    </button>
+    <img
+      class="image-modal-dialog__image"
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading="lazy"
+      decoding="async"
+    />
+  </dialog>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-image-modal-root]').forEach((root) => {
+    if (root.dataset.imageModalInitialized === 'true') return;
+
+    const dialog = root.querySelector<HTMLDialogElement>('[data-image-modal-dialog]');
+    const openButton = root.querySelector<HTMLButtonElement>('[data-image-modal-open]');
+    const closeButton = root.querySelector<HTMLButtonElement>('[data-image-modal-close]');
+    if (!dialog || !openButton) return;
+
+    root.dataset.imageModalInitialized = 'true';
+
+    openButton.addEventListener('click', () => {
+      dialog.showModal();
+    });
+
+    closeButton?.addEventListener('click', () => {
+      dialog.close();
+    });
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+  });
+</script>
+
+<style>
+  .image-modal-root {
+    margin-bottom: var(--space-4);
+  }
+
+  .image-modal-preview {
+    margin-bottom: 0;
+  }
+
+  .image-modal-preview__button {
+    display: block;
+    width: min(100%, var(--image-modal-thumbnail-width));
+    padding: 0;
+    overflow: hidden;
+    cursor: zoom-in;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition:
+      border-color var(--transition-default),
+      box-shadow var(--transition-default),
+      transform var(--transition-default);
+  }
+
+  .image-modal-preview__button:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  .image-modal-preview__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .image-modal-preview figcaption {
+    margin-top: var(--space-2);
+    color: var(--fg-tertiary);
+    font-size: 0.875rem;
+  }
+
+  .image-modal-dialog {
+    width: min(92vw, 74rem);
+    max-height: 90vh;
+    margin: auto;
+    padding: var(--space-5);
+    color: var(--fg-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .image-modal-dialog[open] {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .image-modal-dialog::backdrop {
+    background: rgba(2, 8, 18, 0.78);
+  }
+
+  .image-modal-dialog__close {
+    justify-self: end;
+    width: 2.5rem;
+    aspect-ratio: 1;
+    cursor: pointer;
+    color: var(--fg-primary);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-secondary);
+    border-radius: 999px;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .image-modal-dialog__close:hover {
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .image-modal-dialog__image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: calc(90vh - 7rem);
+    margin: 0 auto;
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-sm);
+  }
+
+  @media (max-width: 640px) {
+    .image-modal-preview__button {
+      width: min(100%, 14rem);
+    }
+
+    .image-modal-dialog {
+      width: 94vw;
+      padding: var(--space-3);
+    }
+
+    .image-modal-dialog__image {
+      max-height: calc(90vh - 5.5rem);
+    }
+  }
+</style>

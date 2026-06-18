@@ -1,6 +1,9 @@
 ---
 import ContentPage from './ContentPage.astro';
 import Callout from './Callout.astro';
+import ImageModal from './ImageModal.astro';
+
+const agreementImage = '/images/upwork/Upwork-onlinebank-agreement.jpg';
 ---
 
 <ContentPage
@@ -11,6 +14,9 @@ import Callout from './Callout.astro';
   <blockquote>
     Данная инструкция актуальна для получения денег от любого контрактора, с которым у вас
     договор с нефиксированной суммой.
+    <br />
+    Статья подготовлена со слов разработчика, часто получающего платежи от Upwork. Автор портала целиком доверяет ему.
+    Если вы нашли неточности, пожалуйста, сообщите об этом.
   </blockquote>
 
   <p>
@@ -37,16 +43,22 @@ import Callout from './Callout.astro';
     При создании валютного договора необходимо указать следующие поля:
   </p>
   <ul>
-    <li>Наименование инопартнера: Upwork Global LLC</li>
-    <li>Страна: United States</li>
+    <li>Наименование инопартнера: <b>Upwork Global LLC</b></li>
+    <li>Страна: <b>United States</b></li>
     <li>Отметить, что в контракте присутствует третье лицо</li>
-    <li>Третье лицо: Отправитель денег</li>
-    <li>Наименование третьего лица: Payment Escrow Inc.</li>
-    <li>Страна третьего лица: United States</li>
-    <li>Прикрепить в поле внизу <a href="https://example.com/upwork-user-agreemen-2026.pdf">договор Upwork</a></li>
+    <li>Третье лицо: <b>Отправитель денег</b></li>
+    <li>Наименование третьего лица: <b>Payment Escrow Inc.</b></li>
+    <li>Страна третьего лица: <b>United States</b></li>
+    <li>Прикрепить в поле внизу <a target="_blank" href="/files/upwork/Upwork-user-agreement-2026.pdf">договор Upwork</a></li>
     <li>Прикрепить инвойс (подробнее ниже)</li>
   </ul>
-  <img src="/public/images/upwork/Upwork-onlinebank-agreement.jpg" alt="Пример заполненного договора">
+  <ImageModal
+    src={agreementImage}
+    alt="Пример заполненного договора в Onlinebank"
+    caption="Пример заполненного договора в Onlinebank"
+    width={1184}
+    height={1280}
+  />
 
   <h2>Изменение данных контракта</h2>
   <p>
@@ -57,14 +69,14 @@ import Callout from './Callout.astro';
   </p>
   <p>
     Для обоснования изменения суммы контракта необходим инвойс от Upwork и его перевод. Пример инвойса
-    можно найти по ссылке <a href="https://example.com/invoice.pdf">Confirmation of Services Form (RU-EN)</a>.
+    можно найти по ссылке <a target="_blank" href="/files/upwork/Confirmation_of_Services_Form_RU-EN.pdf">Confirmation of Services Form (RU-EN)</a>.
     Порядок действий:
   </p>
   <ol>
     <li>Скачать инвойс от Upwork или воспользоваться примером (заменив номер регистрации на ваш)</li>
     <li>Указать сумму перевода/контракта</li>
     <li>Распечатать инвойс</li>
-    <li>Возле строки "Касательно: Договора...." написать ручкой "Без номера договора от 01.01.2026" (вместо 01.01.2026 - дата создания договора в Onlinebank)</li>
-    <li>Возле строки "Re: Upwork...." написать ручкой "W/N dated 01.01.2026" (вместо 01.01.2026 - дата создания договора в Onlinebank)</li>
+    <li>Возле строки "Касательно: Договора...." написать ручкой <i><b>"Без номера договора от 01.01.2026"</b></i> (вместо 01.01.2026 - дата создания договора в Onlinebank)</li>
+    <li>Возле строки "Re: Upwork...." написать ручкой <i><b>"W/N dated 01.01.2026"</b></i> (вместо 01.01.2026 - дата создания договора в Onlinebank)</li>
   </ol>
 </ContentPage>

@@ -1,0 +1,219 @@
+---
+import ContentPage from './ContentPage.astro';
+import ImagePreview from './ImagePreview.astro';
+import Callout from './Callout.astro';
+---
+
+<ContentPage title="Как заполнить форму 910 в 2026 году (Mybuh.kz)">
+  <p class="intro">
+    Форма 910.00 — упрощённая декларация для ИП на упрощённом режиме налогообложения.
+    Её сдают за каждое полугодие через Кабинет налогоплательщика на портале КГД.
+  </p>
+
+  <Callout type="info">
+    <p>Автор портала заполняет форму через mybuh.kz, потому что она сильно упрощает процесс.
+    Процесс на сайте mybuh довольно прост, но, в связи с необходимосью указать адрес
+    осуществления деятельности ИП для возможного уменьшения процентной ставки налога,
+    требует пояснения тут.
+    Как только автор заполнит форму через сайт КГД, инструкция будет обновлена.</p>
+  </Callout>
+
+  <Callout type="warning" title="Сроки сдачи и оплаты">
+    <ul>
+      <li><strong>1 полугодие:</strong> декларацию сдать до 15 августа, налог оплатить до 25 августа</li>
+      <li><strong>2 полугодие:</strong> декларацию сдать до 15 февраля, налог оплатить до 25 февраля следующего года</li>
+    </ul>
+  </Callout>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-content">
+        <h2 class="step-title">1. Открыть mybuh.kz, перейти в раздел "Налоговые отчеты"</h2>
+        <ImagePreview
+          src="/images/910_form/page_0.png"
+          alt="Как перейти в раздел"
+        />
+        <p class="step-text">
+          Нажать на кнопку "Добавить форму 910".
+        </p>
+
+        <ImagePreview
+          src="/images/910_form/page_0_1.png"
+          alt="Как выбрать форму 910.00"
+        />
+
+
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-content">
+        <h2 class="step-title">2. Заполнить форму</h2>
+        <p class="step-text">
+          В поле "Вид декларации" выбрать "Первичная", если вы заполняете первый раз
+          форму 910 в принипце с момента начала ведения ИП, и "Очередная", если вы уже
+          заполняли форму хотя бы один раз.
+        </p>
+
+        <ImagePreview
+          src="/images/910_form/page_1.png"
+          alt="Как выбрать форму 910.00"
+        />
+
+        <p class="step-text">
+          На второй странице в поле "Применяемые виды деятельности" выбрать свой ОКЭД, выбранный при регистрации ИП.
+          Для автора это ОКЭД 62011 - "Деятельность в области разработки и тестирования программного кода"
+          <br />
+          <br />
+          В поле "Сумма уменьшения облагаемой базы" нужно вписать 0, так как скорее всего вы, как и автор портала, не относитесь
+          к категориям ИП, которым необходимо это заполнять. Дальше жмем на "Добавить данные о доходе" и тут уже заполняем
+          свой доход и адрес ведения ИП, чтобы система определила, какой налог вам посчитать: по стандартной ставке в 4% (2026 год)
+          или сниженной для определенных регионов.
+        </p>
+
+        <ImagePreview
+          src="/images/910_form/page_2_1.png"
+          alt="Как выбрать форму 910.00"
+        />
+
+        <p class="step-text">
+          Процентная ставка будет выбрана автоматически, для г.Алматы это 3%. Закрываем модальное окно и проверяем еще раз заполнение.
+        </p>
+
+        <ImagePreview
+          src="/images/910_form/page_2_2.png"
+          alt="Как выбрать форму 910.00"
+        />
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-content">
+        <h2 class="step-title">3. Заполнить "Зарплату предпринимателя"</h2>
+        <p class="step-text">
+          Можно указать минимальную зарплату (85к на 2026) год, и эта зарплата будет выбрала для расчета
+          различных платежей, которые уже были уплочены в начале каждого месяца за предыдущий.
+        </p>
+        <ImagePreview
+          src="/images/910_form/page_3.jpg"
+          alt="Зарплата предпринимателя"
+        />
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-content">
+        <h2 class="step-title">4. Перепроверить заполнение</h2>
+        <p class="step-text">
+          На последнем этапе будет показана форма для подтверждения заполнения и кнопкой "Отправить".
+          Для отправки в налоговую требуется запущенное приложение NCALayer, так как отправка подразумевает подписание формы с ЭЦП.
+        </p>
+
+        <ImagePreview
+          src="/images/910_form/page_4.jpg"
+          alt="Предпросмотр формы 910"
+        />
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-content">
+        <h2 class="step-title">5. Дождаться принятия формы</h2>
+        <p class="step-text">
+          Спустя некоторое время статус формы должен поменяться на "Отчет сдан". Это значит, что форма принята и обработана,
+          и настало время платить по счету расчитанный налог.
+          В случае, если статус неуспешен, нужно уже смотреть в пояснение, которое будет приложено к форме со стороны налоговой.
+        </p>
+        <ImagePreview
+          src="/images/910_form/page_6.png"
+          alt="Успешная подача формы"
+        />
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2 class="section-heading">Частые вопросы</h2>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-question">Как часто сдаётся форма 910?</summary>
+        <div class="faq-answer">
+          <p>Два раза в год — за каждое полугодие. Отдельной месячной или квартальной
+          отчётности по упрощёнке нет.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Какой доход указывать в строке 910.00.001?</summary>
+        <div class="faq-answer">
+          <p>Весь доход, полученный за полугодие в рамках деятельности ИП. Для валютных
+          поступлений берётся сумма в тенге по курсу на дату зачисления.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Нужно ли сдавать декларацию, если дохода не было?</summary>
+        <div class="faq-answer">
+          <p>Да. Пока ИП действует, декларация сдаётся даже при нулевом доходе — в строке
+          дохода просто указывается 0.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Где оплатить начисленный налог?</summary>
+        <div class="faq-answer">
+          <p>Подоходный налог удобно оплатить в банковских приложениях (Kaspi, Halyk) в
+          разделе «Госуслуги» → налоги. Подробности — в разделе
+          <a href="/taxes/" class="link">«Какие налоги оплачивать»</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Что делать, если ошибся в поданной декларации?</summary>
+        <div class="faq-answer">
+          <p>Подаётся дополнительная (корректирующая) форма 910.00 с признаком
+          «дополнительная» — в ней указываются исправленные суммы.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+</ContentPage>
+
+<style>
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-bottom: var(--space-7);
+  }
+
+  .step {
+    padding: var(--space-5) var(--space-6);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-lg);
+    background: var(--bg-secondary);
+  }
+
+  .step-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--fg-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .step-text {
+    font-size: 1rem;
+    color: var(--fg-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: var(--space-3);
+  }
+
+  .step-text:last-child {
+    margin-bottom: 0;
+  }
+
+  .section {
+    margin-top: var(--space-2);
+  }
+</style>
